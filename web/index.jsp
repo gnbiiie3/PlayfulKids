@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Playful Kids</title>
     </head>
     <body>
         <%@include file="include/Header.jsp" %>
@@ -23,21 +23,24 @@
                 <div class="carousel-item active" style="max-height:600px; ">
                     <img class="d-block w-100" src="pic/tenten.jpg" alt="First slide" height="600px" >
                     <div class="carousel-caption">
-                        <h5 >Welcome to our Shops</h5>
-                        <p>Find All your Book You want from here!</p>
+                        <h5 >Welcome to <b>Playful Kids</b> Shop</h5>
+                        <p>ร้านค้าของเล่นเพื่อพัฒนาการที่ดีของลูกน้อยคุณ</p>
+                        <button type="button" class="btn btn-warning">ดูสินค้าทั้งหมด</button>
                     </div>
                 </div>
                 <div class="carousel-item" style="max-height:600px; ">
-                    <img class="d-block w-100" src="pic/documentary.jpg" alt="Second slide" >
+                    <img class="d-block w-100" src="pic/tenten.jpg" alt="Second slide" >
                     <div class="carousel-caption">
                         <h5>Lots of Documentary Book Here </h5>
+                        <button type="button" class="btn btn-warning">ดูสินค้าทั้งหมด</button>
                         <p>Explore the world with the Documentary Books</p>
                     </div>
                 </div>
                 <div class="carousel-item"  style="max-height:600px; ">
-                    <img class="d-block w-100" src="pic/magezine.jpg" alt="Third slide">
+                    <img class="d-block w-100" src="pic/tenten.jpg" alt="Third slide">
                     <div class="carousel-caption">
                         <h5>Lots of Magezine Here </h5>
+                        <button type="button" class="btn btn-warning">ดูสินค้าชิ้นนี้</button>
                         <p>Update the daily news and Fashion</p>
                     </div>
                 </div>
@@ -54,40 +57,51 @@
         <!-- Page Content -->
         <div class="container">
 
-            <h1 class="my-4">Welcome to Modern Business</h1>
+            <h1 class="my-4">ของเล่นเสริมพัฒนาการเด็ก</h1>
 
             <!-- Marketing Icons Section -->
             <div class="row">
-                <div class="col-lg-4 mb-4">
+                <div class="col-lg-6 mb-6" style="margin-bottom: 30px;">
                     <div class="card h-100">
-                        <h4 class="card-header">Card Title</h4>
+                        <h4 class="card-header">ด้านร่างกาย</h4>
                         <div class="card-body">
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">Learn More</a>
+                            <a href="#" class="btn btn-primary">ดูรายการสินค้า</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-4">
+                <div class="col-lg-6 mb-6" style="margin-bottom: 30px;">
                     <div class="card h-100">
-                        <h4 class="card-header">Card Title</h4>
+                        <h4 class="card-header">ด้านจิตใจ</h4>
                         <div class="card-body">
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">Learn More</a>
+                            <a href="#" class="btn btn-primary">ดูรายการสินค้า</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-4">
+                <div class="col-lg-6 mb-6" style="margin-bottom: 70px;">
                     <div class="card h-100">
-                        <h4 class="card-header">Card Title</h4>
+                        <h4 class="card-header">ด้านอารมณ์</h4>
                         <div class="card-body">
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">Learn More</a>
+                            <a href="#" class="btn btn-primary">ดูรายการสินค้า</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-6" style="margin-bottom: 70px;">
+                    <div class="card h-100">
+                        <h4 class="card-header">ด้านสติปัญญา</h4>
+                        <div class="card-body">
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary">ดูรายการสินค้า</a>
                         </div>
                     </div>
                 </div>
@@ -95,71 +109,92 @@
             <!-- /.row -->
 
             <!-- Portfolio Section -->
-            <h2>Portfolio Heading</h2>
+            <h2>สินค้าแนะนำ</h2>
 
             <div class="row">
-                <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 70px;">
                     <div class="card h-100">
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
                                 <a href="#">Project One</a>
                             </h4>
+                            <h6>
+                                <a href="#">Catalog</a>
+                            </h6>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 70px;">
                     <div class="card h-100">
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
                                 <a href="#">Project Two</a>
                             </h4>
+                            <h6>
+                                <a href="#">Catalog</a>
+                            </h6>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 70px;">
                     <div class="card h-100">
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
                                 <a href="#">Project Three</a>
                             </h4>
+                            <h6>
+                                <a href="#">Catalog</a>
+                            </h6>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-6 portfolio-item">
+            </div>
+            <h2>สินค้าใหม่</h2>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 70px;">
                     <div class="card h-100">
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
                                 <a href="#">Project Four</a>
                             </h4>
+                            <h6>
+                                <a href="#">Catalog</a>
+                            </h6>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 70px;">
                     <div class="card h-100">
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
                                 <a href="#">Project Five</a>
                             </h4>
+                            <h6>
+                                <a href="#">Catalog</a>
+                            </h6>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="col-lg-4 col-sm-6 portfolio-item"style="margin-bottom: 70px;">
                     <div class="card h-100">
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
                                 <a href="#">Project Six</a>
                             </h4>
+                            <h6>
+                                <a href="#">Catalog</a>
+                            </h6>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
                         </div>
                     </div>
