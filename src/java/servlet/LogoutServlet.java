@@ -22,7 +22,7 @@ import javax.transaction.UserTransaction;
  * @author Sarita
  */
 public class LogoutServlet extends HttpServlet {
-    @PersistenceUnit(unitName = "PlayfulPU")
+    @PersistenceUnit(unitName = "PlayfulKidsPU")
     EntityManagerFactory emf;
     
     @Resource
