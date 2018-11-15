@@ -33,6 +33,9 @@
                     Password : <input type="text" name="password" style="height: 20px" required/>
                 </p>
                 <p>
+                    Confirm Password : <input type="text" name="comfirmPassword" style="height: 20px" required/>
+                </p>
+                <p>
                     ชื่อ - นามสกุล : <input type="text" name="addressline1" style="height: 20px" required/>
                 </p>
                 <p>
