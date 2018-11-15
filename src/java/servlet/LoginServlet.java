@@ -27,7 +27,7 @@ import model.Account;
  */
 public class LoginServlet extends HttpServlet {
 
-    @PersistenceUnit(unitName = "PlayfulPU")
+    @PersistenceUnit(unitName = "PlayfulKidsPU")
     EntityManagerFactory emf;
 
     @Resource
