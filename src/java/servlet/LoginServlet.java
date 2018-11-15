@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlet;
+package servlet;
 
 import controller.AccountJpaController;
 import java.io.IOException;
@@ -49,9 +49,9 @@ public class LoginServlet extends HttpServlet {
         password = cryptWithMD5(password);
 
         HttpSession session = request.getSession(true);
-        if (email != null && email.trim().length() > 0 && password != null && password.trim().length() > 0) {
+        if (email != null && password != null ) {
             AccountJpaController accJpaCtrl = new AccountJpaController(utx, emf);
-            Account account = accJpaCtrl.findAccount(Integer.SIZE);
+            Account account = accJpaCtrl.findAccount(email);
             if (account != null) {
                 if (password.equalsIgnoreCase(account.getPassword())) {
                     session.setAttribute("account", account);

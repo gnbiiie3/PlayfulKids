@@ -5,22 +5,19 @@
  */
 package controller;
 
-import controller.exceptions.IllegalOrphanException;
 import controller.exceptions.NonexistentEntityException;
 import controller.exceptions.PreexistingEntityException;
 import controller.exceptions.RollbackFailureException;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import model.Account;
-import model.Address;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.transaction.UserTransaction;
+import model.Address;
 import model.Customer;
 
 /**
@@ -40,40 +37,17 @@ public class CustomerJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Customer customer) throws IllegalOrphanException, PreexistingEntityException, RollbackFailureException, Exception {
-        List<String> illegalOrphanMessages = null;
-        Account accountOrphanCheck = customer.getAccount();
-        if (accountOrphanCheck != null) {
-            Customer oldCustomerOfAccount = accountOrphanCheck.getCustomer();
-            if (oldCustomerOfAccount != null) {
-                if (illegalOrphanMessages == null) {
-                    illegalOrphanMessages = new ArrayList<String>();
-                }
-                illegalOrphanMessages.add("The Account " + accountOrphanCheck + " already has an item of type Customer whose account column cannot be null. Please make another selection for the account field.");
-            }
-        }
-        if (illegalOrphanMessages != null) {
-            throw new IllegalOrphanException(illegalOrphanMessages);
-        }
+    public void create(Customer customer) throws PreexistingEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
             em = getEntityManager();
-            Account account = customer.getAccount();
-            if (account != null) {
-                account = em.getReference(account.getClass(), account.getAccountid());
-                customer.setAccount(account);
-            }
             Address lastaddress = customer.getLastaddress();
             if (lastaddress != null) {
                 lastaddress = em.getReference(lastaddress.getClass(), lastaddress.getAddressid());
                 customer.setLastaddress(lastaddress);
             }
             em.persist(customer);
-            if (account != null) {
-                account.setCustomer(customer);
-                account = em.merge(account);
-            }
             if (lastaddress != null) {
                 lastaddress.getCustomerList().add(customer);
                 lastaddress = em.merge(lastaddress);
@@ -96,46 +70,19 @@ public class CustomerJpaController implements Serializable {
         }
     }
 
-    public void edit(Customer customer) throws IllegalOrphanException, NonexistentEntityException, RollbackFailureException, Exception {
+    public void edit(Customer customer) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
             em = getEntityManager();
             Customer persistentCustomer = em.find(Customer.class, customer.getCustomerid());
-            Account accountOld = persistentCustomer.getAccount();
-            Account accountNew = customer.getAccount();
             Address lastaddressOld = persistentCustomer.getLastaddress();
             Address lastaddressNew = customer.getLastaddress();
-            List<String> illegalOrphanMessages = null;
-            if (accountNew != null && !accountNew.equals(accountOld)) {
-                Customer oldCustomerOfAccount = accountNew.getCustomer();
-                if (oldCustomerOfAccount != null) {
-                    if (illegalOrphanMessages == null) {
-                        illegalOrphanMessages = new ArrayList<String>();
-                    }
-                    illegalOrphanMessages.add("The Account " + accountNew + " already has an item of type Customer whose account column cannot be null. Please make another selection for the account field.");
-                }
-            }
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
-            }
-            if (accountNew != null) {
-                accountNew = em.getReference(accountNew.getClass(), accountNew.getAccountid());
-                customer.setAccount(accountNew);
-            }
             if (lastaddressNew != null) {
                 lastaddressNew = em.getReference(lastaddressNew.getClass(), lastaddressNew.getAddressid());
                 customer.setLastaddress(lastaddressNew);
             }
             customer = em.merge(customer);
-            if (accountOld != null && !accountOld.equals(accountNew)) {
-                accountOld.setCustomer(null);
-                accountOld = em.merge(accountOld);
-            }
-            if (accountNew != null && !accountNew.equals(accountOld)) {
-                accountNew.setCustomer(customer);
-                accountNew = em.merge(accountNew);
-            }
             if (lastaddressOld != null && !lastaddressOld.equals(lastaddressNew)) {
                 lastaddressOld.getCustomerList().remove(customer);
                 lastaddressOld = em.merge(lastaddressOld);
@@ -177,11 +124,6 @@ public class CustomerJpaController implements Serializable {
                 customer.getCustomerid();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The customer with id " + id + " no longer exists.", enfe);
-            }
-            Account account = customer.getAccount();
-            if (account != null) {
-                account.setCustomer(null);
-                account = em.merge(account);
             }
             Address lastaddress = customer.getLastaddress();
             if (lastaddress != null) {
