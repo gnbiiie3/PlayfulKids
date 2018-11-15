@@ -8,6 +8,8 @@ package Servlet;
 import controller.AccountJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -24,9 +26,10 @@ import model.Account;
  * @author Sarita
  */
 public class LoginServlet extends HttpServlet {
-    @PersistenceUnit (unitName = "PlayfulPU")
+
+    @PersistenceUnit(unitName = "PlayfulPU")
     EntityManagerFactory emf;
-    
+
     @Resource
     UserTransaction utx;
 
@@ -41,47 +44,48 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String accountid = request.getParameter("id");
-        String password = request.getParameter("pass");
-        int id = 0 ;
-        
-        AccountJpaController accCtrl = new AccountJpaController(utx, emf);
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        password = cryptWithMD5(password);
+
         HttpSession session = request.getSession(true);
-        Account acc;
-        
-        if(accountid != null && accountid.trim().length() > 0 &&
-           password != null && password.trim().length() > 0){
-                id = Integer.valueOf(accountid);
-        
-        
-     
-            acc = accCtrl.findAccount(id);
-            
-            if(session != null){
-                if(acc != null){
-                    if(id == acc.getAccountid()){
-                        if(password.equalsIgnoreCase(acc.getPassword())){
-                            session.setAttribute("account", acc);
-                            getServletContext().getRequestDispatcher("/MyAccount.jsp").forward(request, response);
-                            return;
-                        }
-                        request.setAttribute("message", "Try again");
-                        getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
-                        return;
-                    }
-                    request.setAttribute("message", "Try again");
-                    getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
-                    return;
+        if (email != null && email.trim().length() > 0 && password != null && password.trim().length() > 0) {
+            AccountJpaController accJpaCtrl = new AccountJpaController(utx, emf);
+            Account account = accJpaCtrl.findAccount(Integer.SIZE);
+            if (account != null) {
+                if (password.equalsIgnoreCase(account.getPassword())) {
+                    session.setAttribute("account", account);
+                    getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("message", "Invaild Email or Password");
+                    getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
                 }
-                request.setAttribute("message", "Try again");
-                getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
-                return;
+            } else {
+                request.setAttribute("message", "Invaild Email or Password");
+                getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
             }
-            getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
+
+        } else {
+            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
         }
-            
     }
-    
+
+    public static String cryptWithMD5(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] passBytes = password.getBytes();
+            md.reset();
+            byte[] digested = md.digest(passBytes);
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < digested.length; i++) {
+                sb.append(Integer.toHexString(0xff & digested[i]));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException ex) {
+            System.out.println(ex);
+        }
+        return null;
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
