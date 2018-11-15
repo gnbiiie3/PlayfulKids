@@ -20,87 +20,73 @@
 
 
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-    <a href="Main.jsp" title="Back to Home"><img src="pic/logo.png" width="50"/></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active" style="margin-left: 10px">
-                <a class="nav-link" href="Main.jsp">Home <span class="sr-only">(current)</span></a>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Product?name=all">All Books</a>
+              <a class="nav-link" href="services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Categories
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="Product?name=Science and Technology">Science and Technology</a>
-                    <a class="dropdown-item" href="Product?name=Food and Health">Food and Health</a>
-                    <a class="dropdown-item" href="Product?name=Children and Toddler">Children and Toddler</a>
-                    <a class="dropdown-item" href="Product?name=Education">Education</a>
-                    <a class="dropdown-item" href="Product?name=Entertainment and Travel">Entertainment and Travel</a>
-                    <a class="dropdown-item" href="Product?name=Literature">Literature</a>
-                    <a class="dropdown-item" href="Product?name=all">All</a>
-
-                </div>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Portfolio
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
+                <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
+                <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
+                <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
+                <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
+              </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Contract.jsp">Contact us</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Blog
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
+                <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
+                <a class="dropdown-item" href="blog-post.html">Blog Post</a>
+              </div>
             </li>
-            <form class="form-inline my-2 my-lg-0" action="Search" method="post">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </ul>
-
-
-    </div>
-    <div class="login">
-        <c:choose>
-            <c:when test ="${sessionScope.username != null}">
-                <div class="dropdown" >
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Hello:&nbsp;${username.username}
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="Profile.jsp">Profile</a>
-                        <a class="dropdown-item" href="History.jsp">History</a>
-                        <a class="dropdown-item" href="Logout">Logout</a>
-
-                    </div>
-                </div>
-            </c:when>
-            <c:otherwise>
-                <a href="Login" class="btn btn-outline-success my-2 my-sm-0" >Login</a>
-            </c:otherwise>
-        </c:choose>
-    </div>
-
-    <table>
-        <tr>
-            <td><a href="ShowCart" title="Pay" style="margin-left: 20px" ><img src="pic/basket.png" width="40"/></a></td>
-            <td style="padding-bottom: 10px" height="5"><h1><font size="4">${cart.totalQuantity}</font></h1></td>
-        </tr>
-    </table>
-
-</nav>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Other Pages
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                <a class="dropdown-item" href="full-width.html">Full Width Page</a>
+                <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
+                <a class="dropdown-item" href="faq.html">FAQ</a>
+                <a class="dropdown-item" href="404.html">404</a>
+                <a class="dropdown-item" href="pricing.html">Pricing Table</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 <style>
     nav{font-family: 'Slabo 27px', serif;}
 </style>
 <style>
-    body {
+/*    body {
         opacity: 1;
         transition: 1s opacity;
     }
     body.fade-out {
         opacity: 0;
         transition: none;
-    }
+    }*/
 </style>
 <script>document.body.className += ' fade-out';
     $(function () {
