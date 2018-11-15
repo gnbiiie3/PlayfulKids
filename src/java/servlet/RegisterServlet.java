@@ -98,7 +98,7 @@ public class RegisterServlet extends HttpServlet {
                     newCustomer.setLastaddress(newAddress);
                     newAccount.setEmail(email);
                     newAccount.setPassword(password);
-                    newAccount.setCustomer(newCustomer);
+
 
                     try {
                         addJpaCtrl.create(newAddress);
