@@ -17,7 +17,7 @@
     <div class="container">
 
       <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">About
+      <h1 class="mt-4 mb-3">เกี่ยวกับเรา
         <small>Playful Kids</small>
       </h1>
 
