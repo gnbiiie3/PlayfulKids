@@ -25,7 +25,7 @@
                     <div class="carousel-caption">
                         <h5 >Welcome to <b>Playful Kids</b> Shop</h5>
                         <p>ร้านค้าของเล่นเพื่อพัฒนาการที่ดีของลูกน้อยคุณ</p>
-                        <button type="button" class="btn btn-warning">ดูสินค้าทั้งหมด</button>
+                        <a href="productPage.jsp"><button type="button" class="btn btn-warning">ดูสินค้าทั้งหมด</button></a>
                     </div>
                 </div>
                 <div class="carousel-item" style="max-height:600px; ">
