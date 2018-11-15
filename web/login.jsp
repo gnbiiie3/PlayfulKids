@@ -25,10 +25,10 @@
         <h1 style="margin-top: 250px;">LOGIN</h1>
         <form action="Login" method="post">
             <p>
-                <input type="text" name="id" placeholder="Username" style="height: 20px"/>
+                <input type="text" name="email" placeholder="Email" style="height: 20px"/>
             </p>
             <p>
-                <input type="text" name="pass" placeholder="Password" style="height: 20px"/>
+                <input type="text" name="password" placeholder="Password" style="height: 20px"/>
             </p>
             <input type="submit" value="Submit" style="margin-top: 5px;"/>
 
