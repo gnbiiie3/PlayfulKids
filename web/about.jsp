@@ -17,7 +17,7 @@
     <div class="container">
 
       <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">About
+      <h1 class="mt-4 mb-3">เกี่ยวกับเรา
         <small>Playful Kids</small>
       </h1>
 
@@ -114,5 +114,11 @@
 
     </div>
     <!-- /.container -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
     </body>
 </html>
