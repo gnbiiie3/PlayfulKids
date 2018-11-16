@@ -21,23 +21,23 @@
             </ol>
             <div class="carousel-inner" >
                 <div class="carousel-item active" style="max-height:600px; ">
-                    <img class="d-block w-100" src="pic/tenten.jpg" alt="First slide" height="600px" >
+                    <img class="d-block w-100" src="pic/funnykid.png" alt="First slide" height="600px" >
                     <div class="carousel-caption">
                         <h5 >Welcome to <b>Playful Kids</b> Shop</h5>
                         <p>ร้านค้าของเล่นเพื่อพัฒนาการที่ดีของลูกน้อยคุณ</p>
-                        <button type="button" class="btn btn-warning">ดูสินค้าทั้งหมด</button>
+                        <a href="productPage.jsp"><button type="button" class="btn btn-warning">ดูสินค้าทั้งหมด</button></a>
                     </div>
                 </div>
                 <div class="carousel-item" style="max-height:600px; ">
-                    <img class="d-block w-100" src="pic/tenten.jpg" alt="Second slide" >
+                    <img class="d-block w-100" src="pic/toypromo.png" alt="Second slide" >
                     <div class="carousel-caption">
-                        <h5>Lots of Documentary Book Here </h5>
+                        <h5>สินค้ามาใหม่</h5>
                         <button type="button" class="btn btn-warning">ดูสินค้าทั้งหมด</button>
                         <p>Explore the world with the Documentary Books</p>
                     </div>
                 </div>
                 <div class="carousel-item"  style="max-height:600px; ">
-                    <img class="d-block w-100" src="pic/tenten.jpg" alt="Third slide">
+                    <img class="d-block w-100" src="pic/coloring.png" alt="Third slide">
                     <div class="carousel-caption">
                         <h5>Lots of Magezine Here </h5>
                         <button type="button" class="btn btn-warning">ดูสินค้าชิ้นนี้</button>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="col-lg-6 mb-6" style="margin-bottom: 30px;">
                     <div class="card h-100">
-                        <h4 class="card-header">ด้านจิตใจ</h4>
+                        <h4 class="card-header">ด้านสังคม</h4>
                         <div class="card-body">
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
                         </div>
@@ -205,21 +205,15 @@
             <!-- Features Section -->
             <div class="row">
                 <div class="col-lg-6">
-                    <h2>Modern Business Features</h2>
-                    <p>The Modern Business template by Start Bootstrap includes:</p>
-                    <ul>
-                        <li>
-                            <strong>Bootstrap v4</strong>
-                        </li>
-                        <li>jQuery</li>
-                        <li>Font Awesome</li>
-                        <li>Working contact form with validation</li>
-                        <li>Unstyled page elements for easy customization</li>
-                    </ul>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+                    <h2>สีที่ปลอดภัยกับลูกน้อยของคุณ</h2>
+                   
+                    <p>สีที่ใช้สำหรับการทาลงบนของเล่นเด็กคือ สีแลคเกอร์<br>
+                    ที่ผ่านมาตรฐานความปลอดภัย EN-71 (EN = European Norm) Safety of Toys.<br>
+                    ซึ่งเป็นมาตรฐานคุณภาพสินค้ายุโรป ในส่วนที่เกี่ยวข้องกับของเล่นเด็ก<br>
+                    โดยตัวสีปราศจากโลหะหนักอันตราย 8 ชนิด เพื่อให้มั่นใจว่าของเล่นเด็กมีความปลอดภัยจากสารเคมี</p>
                 </div>
                 <div class="col-lg-6">
-                    <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+                    <img class="img-fluid rounded" src="pic/paintbucket.jpg" alt="">
                 </div>
             </div>
             <!-- /.row -->
