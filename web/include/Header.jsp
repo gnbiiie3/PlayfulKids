@@ -30,7 +30,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                     <a class="dropdown-item" href="productIQ.jsp">ด้านสติปัญญา</a>
-                    <a class="dropdown-item" href="productPhisical.jsp">ด้านร่างกาย</a>
+                    <a class="dropdown-item" href="productPhysical.jsp">ด้านร่างกาย</a>
                     <a class="dropdown-item" href="productEmotional.jsp">ด้านอารมณ์</a>
                     <a class="dropdown-item" href="productSocial.jsp">ด้านสังคม</a>
                 </div>
