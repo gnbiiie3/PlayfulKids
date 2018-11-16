@@ -17,7 +17,6 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.UserTransaction;
-import model.Address;
 import model.Customer;
 
 /**
@@ -42,16 +41,7 @@ public class CustomerJpaController implements Serializable {
         try {
             utx.begin();
             em = getEntityManager();
-            Address lastaddress = customer.getLastaddress();
-            if (lastaddress != null) {
-                lastaddress = em.getReference(lastaddress.getClass(), lastaddress.getAddressid());
-                customer.setLastaddress(lastaddress);
-            }
             em.persist(customer);
-            if (lastaddress != null) {
-                lastaddress.getCustomerList().add(customer);
-                lastaddress = em.merge(lastaddress);
-            }
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -75,22 +65,7 @@ public class CustomerJpaController implements Serializable {
         try {
             utx.begin();
             em = getEntityManager();
-            Customer persistentCustomer = em.find(Customer.class, customer.getCustomerid());
-            Address lastaddressOld = persistentCustomer.getLastaddress();
-            Address lastaddressNew = customer.getLastaddress();
-            if (lastaddressNew != null) {
-                lastaddressNew = em.getReference(lastaddressNew.getClass(), lastaddressNew.getAddressid());
-                customer.setLastaddress(lastaddressNew);
-            }
             customer = em.merge(customer);
-            if (lastaddressOld != null && !lastaddressOld.equals(lastaddressNew)) {
-                lastaddressOld.getCustomerList().remove(customer);
-                lastaddressOld = em.merge(lastaddressOld);
-            }
-            if (lastaddressNew != null && !lastaddressNew.equals(lastaddressOld)) {
-                lastaddressNew.getCustomerList().add(customer);
-                lastaddressNew = em.merge(lastaddressNew);
-            }
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -124,11 +99,6 @@ public class CustomerJpaController implements Serializable {
                 customer.getCustomerid();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The customer with id " + id + " no longer exists.", enfe);
-            }
-            Address lastaddress = customer.getLastaddress();
-            if (lastaddress != null) {
-                lastaddress.getCustomerList().remove(customer);
-                lastaddress = em.merge(lastaddress);
             }
             em.remove(customer);
             utx.commit();
