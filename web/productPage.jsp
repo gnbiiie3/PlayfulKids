@@ -59,10 +59,14 @@
                                         <a href="${demo}"><button type="button" class="btn btn-success">ซื้อเลย!</button></a>
                                     </div>
                                 </div>
-                                <h6>
-                                    <a href="${demo}">${demo}</a>
-                                </h6>
-                                <p class="card-text">${demo}</p>
+                                    <small>
+                                        <a href="${demo}">${catalog}</a>
+                                    </small>
+                                    <h6>
+                                        ${price}
+                                    </h6>
+                                
+                                <p class="card-text">${Detail}</p>
                             </div>
                         </div>
                     </div>
