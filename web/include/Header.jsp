@@ -51,13 +51,32 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="login.jsp">Login</a>
-                </li>
-                <li class="nav-item nav-link">|</li>
-                <li class="nav-item">
-                    <a class="nav-link" href="register.jsp">Register</a>
-                </li>
+
+                <c:choose>
+                    <c:when test ="${account != null}">
+                        <div class="dropdown" >
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Hello:&nbsp;${account.email}
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="Profile.jsp">Profile</a>
+                                <a class="dropdown-item" href="History.jsp">History</a>
+                                <a class="dropdown-item" href="Logout">Logout</a>
+
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.jsp">Login</a>
+                        </li>
+                        <li class="nav-item nav-link">|</li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register.jsp">Register</a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+
                 <!--                <li>
                                     <form class="form-inline">
                                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
