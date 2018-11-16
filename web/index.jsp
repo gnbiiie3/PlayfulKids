@@ -32,15 +32,15 @@
                     <img class="d-block w-100" src="pic/toypromo.png" alt="Second slide" >
                     <div class="carousel-caption">
                         <h5>สินค้ามาใหม่</h5>
-                        <button type="button" class="btn btn-warning">ดูสินค้าทั้งหมด</button>
-                        <p>Explore the world with the Documentary Books</p>
+                        <a href="productPage.jsp"><button type="button" class="btn btn-warning">ดูสินค้าทั้งหมด</button></a>
+                        
                     </div>
                 </div>
                 <div class="carousel-item"  style="max-height:600px; ">
                     <img class="d-block w-100" src="pic/coloring.png" alt="Third slide">
                     <div class="carousel-caption">
                         <h5>Lots of Magezine Here </h5>
-                        <button type="button" class="btn btn-warning">ดูสินค้าชิ้นนี้</button>
+                        <a href="productIQ.jsp"><button type="button" class="btn btn-warning">ดูสินค้าประเภทนี้</button></a>
                         <p>Update the daily news and Fashion</p>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">ดูรายการสินค้า</a>
+                            <a href="productPhysical.jsp" class="btn btn-primary">ดูรายการสินค้า</a>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">ดูรายการสินค้า</a>
+                            <a href="productSocial.jsp" class="btn btn-primary">ดูรายการสินค้า</a>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">ดูรายการสินค้า</a>
+                            <a href="productEmotional.jsp" class="btn btn-primary">ดูรายการสินค้า</a>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">ดูรายการสินค้า</a>
+                            <a href="productIQ.jsp" class="btn btn-primary">ดูรายการสินค้า</a>
                         </div>
                     </div>
                 </div>

@@ -17,7 +17,6 @@
 
             <!-- Page Heading/Breadcrumbs -->
             <h1 class="mt-4 mb-3">สินค้าทั้งหมด
-                <small>(ใหม่)</small>
             </h1>
 
             <ol class="breadcrumb">
@@ -31,6 +30,8 @@
                         <a class="dropdown-item" href="productPhysical.jsp">ด้านร่างกาย</a>
                         <a class="dropdown-item" href="productEmotional.jsp">ด้านอารมณ์</a>
                         <a class="dropdown-item" href="productSocial.jsp">ด้านสังคม</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="productPage.jsp">ดูทั้งหมด</a>
                     </div>
                 </div>
                 <button type="button" class="btn btn-primary">ตัวเลือกการค้นหา</button>
@@ -50,7 +51,7 @@
                             <div class="row">
                                 <div class="col-6 text-left">
                                     <h4 class="card-title">
-                                        <a href="#">Project One</a>
+                                        <a href="productDetail.jsp">Project One</a>
                                     </h4>
                                 </div>
                                 <div class="col-6 text-right">
