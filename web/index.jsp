@@ -63,9 +63,10 @@
             <div class="row">
                 <div class="col-lg-6 mb-6" style="margin-bottom: 30px;">
                     <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="pic/physical.jpg" alt=""></a>
                         <h4 class="card-header">ด้านร่างกาย</h4>
                         <div class="card-body">
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                            <p class="card-text">เป็นความสามารถของร่างกายในการทรงตัวและการเคลื่อนไหว โดยการใช้กล้ามเนื้อมัดใหญ่ (Gross Motor Development) เช่น วิ่ง, กระโดด, ปีนป่าย และการใช้กล้ามเนื้อมัดเล็ก มือและตาประสานกันในการทำกิจกรรมต่างๆ (Fine Motor - Adaptive Development) เช่น ระบายสี, ใช้ช้อน, ติดกระดุม</p>
                         </div>
                         <div class="card-footer">
                             <a href="productPhysical.jsp" class="btn btn-primary">ดูรายการสินค้า</a>
@@ -74,9 +75,10 @@
                 </div>
                 <div class="col-lg-6 mb-6" style="margin-bottom: 30px;">
                     <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="pic/social.jpg" alt=""></a>
                         <h4 class="card-header">ด้านสังคม</h4>
                         <div class="card-body">
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+                            <p class="card-text">เป็นความสามารถในการสร้างสัมพันธภาพกับผู้อื่น เข้าใจผู้อื่น (personal-social) สามารถช่วยเหลือตนเองในชีวิตประจำวัน (self help, self care) และรู้จักผิดชอบชั่วดี ประกอบด้วย พัฒนาการด้านสังคม (Social Development) และพัฒนาการด้านคุณธรรม (Moral Development)</p>
                         </div>
                         <div class="card-footer">
                             <a href="productSocial.jsp" class="btn btn-primary">ดูรายการสินค้า</a>
@@ -85,9 +87,10 @@
                 </div>
                 <div class="col-lg-6 mb-6" style="margin-bottom: 70px;">
                     <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="pic/emotion.jpg" alt=""></a>
                         <h4 class="card-header">ด้านอารมณ์</h4>
                         <div class="card-body">
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                            <p class="card-text">เป็นความสามารถในการแสดงความรู้สึก และควบคุมการแสดงออกของอารมณ์อย่างเหมาะสม ในอารมณ์ต่างๆ เช่น ยิ้ม, ร้องไห้, หัวเราะ, กลัว, เศร้า, เสียใจ, โกรธ รวมถึงการสร้างความรู้สึกที่ดี การนับถือตนเอง (self esteem)</p>
                         </div>
                         <div class="card-footer">
                             <a href="productEmotional.jsp" class="btn btn-primary">ดูรายการสินค้า</a>
@@ -96,9 +99,10 @@
                 </div>
                 <div class="col-lg-6 mb-6" style="margin-bottom: 70px;">
                     <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="pic/cognitive.jpg" alt=""></a>
                         <h4 class="card-header">ด้านสติปัญญา</h4>
                         <div class="card-body">
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                            <p class="card-text">เป็นความสามารถในการเรียนรู้ความสัมพันธ์ระหว่างสิ่งต่างๆ กับตนเอง เป็นกระบวนการทางจิตใจ (mental processes) ที่เราใช้คิด เรียนรู้ หาเหตุผล แก้ไขปัญหา และสื่อสาร ซึ่งประกอบด้วย พัฒนาการด้านภาษา (Language Development) และพัฒนาการด้านกล้ามเนื้อมัดเล็ก (Fine Motor Development)</p>
                         </div>
                         <div class="card-footer">
                             <a href="productIQ.jsp" class="btn btn-primary">ดูรายการสินค้า</a>
