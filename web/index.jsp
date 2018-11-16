@@ -206,11 +206,11 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h2>สีที่ปลอดภัยกับลูกน้อยของคุณ</h2>
-                   
+
                     <p>สีที่ใช้สำหรับการทาลงบนของเล่นเด็กคือ สีแลคเกอร์<br>
-                    ที่ผ่านมาตรฐานความปลอดภัย EN-71 (EN = European Norm) Safety of Toys.<br>
-                    ซึ่งเป็นมาตรฐานคุณภาพสินค้ายุโรป ในส่วนที่เกี่ยวข้องกับของเล่นเด็ก<br>
-                    โดยตัวสีปราศจากโลหะหนักอันตราย 8 ชนิด เพื่อให้มั่นใจว่าของเล่นเด็กมีความปลอดภัยจากสารเคมี</p>
+                        ที่ผ่านมาตรฐานความปลอดภัย EN-71 (EN = European Norm) Safety of Toys.<br>
+                        ซึ่งเป็นมาตรฐานคุณภาพสินค้ายุโรป ในส่วนที่เกี่ยวข้องกับของเล่นเด็ก<br>
+                        โดยตัวสีปราศจากโลหะหนักอันตราย 8 ชนิด เพื่อให้มั่นใจว่าของเล่นเด็กมีความปลอดภัยจากสารเคมี</p>
                 </div>
                 <div class="col-lg-6">
                     <img class="img-fluid rounded" src="pic/paintbucket.jpg" alt="">
@@ -231,5 +231,11 @@
             </div>
 
         </div>
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+            </div>
+            <!-- /.container -->
+        </footer>
     </body>
 </html>
