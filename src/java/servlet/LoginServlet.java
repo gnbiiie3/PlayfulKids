@@ -46,11 +46,12 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        password = cryptWithMD5(password);
+        
 
         HttpSession session = request.getSession(true);
         if (session.getAttribute("account") == null) {
             if (email != null && password != null) {
+                password = cryptWithMD5(password);
                 AccountJpaController accJpaCtrl = new AccountJpaController(utx, emf);
                 Account account = accJpaCtrl.findAccount(email);
                 if (account != null) {
@@ -69,8 +70,6 @@ public class LoginServlet extends HttpServlet {
             } else {
                 getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
             }
-        }else{
-        getServletContext().getRequestDispatcher("/Home").forward(request, response);
         }
 
         getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
