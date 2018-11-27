@@ -47,7 +47,7 @@
                 <c:forEach items="${product}" var="product" varStatus="i">
                     <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" style="margin-bottom: 15px;">
                         <div class="card h-100">
-                            <a href="ProductDetail?productid=${product.productid}"><img class="card-img-top" src="product/${product}.png" alt="">${product.productname}</a>
+                            <a href="ProductDetail?productid=${product.productid}"><img class="card-img-top" src="product/${product.productid}.jpg" alt="${product.productname}"></a>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-6 text-left">
