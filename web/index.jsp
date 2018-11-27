@@ -25,14 +25,14 @@
                     <div class="carousel-caption">
                         <h5 >Welcome to <b>Playful Kids</b> Shop</h5>
                         <p>ร้านค้าของเล่นเพื่อพัฒนาการที่ดีของลูกน้อยคุณ</p>
-                        <a href="productPage.jsp"><button type="button" class="btn btn-warning">ดูสินค้าทั้งหมด</button></a>
+                        <a href="ProductList"><button type="button" class="btn btn-warning">ดูสินค้าทั้งหมด</button></a>
                     </div>
                 </div>
                 <div class="carousel-item" style="max-height:600px; ">
                     <img class="d-block w-100" src="pic/toypromo.png" alt="Second slide" >
                     <div class="carousel-caption">
                         <h5>สินค้ามาใหม่</h5>
-                        <a href="productPage.jsp"><button type="button" class="btn btn-warning">ดูสินค้าทั้งหมด</button></a>
+                        <a href="ProductList"><button type="button" class="btn btn-warning">ดูสินค้าทั้งหมด</button></a>
                         
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                     <img class="d-block w-100" src="pic/coloring.png" alt="Third slide">
                     <div class="carousel-caption">
                         <h5>Lots of Magezine Here </h5>
-                        <a href="productIQ.jsp"><button type="button" class="btn btn-warning">ดูสินค้าประเภทนี้</button></a>
+                        <a href="ProductList"><button type="button" class="btn btn-warning">ดูสินค้าประเภทนี้</button></a>
                         <p>Update the daily news and Fashion</p>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                             <p class="card-text">เป็นความสามารถของร่างกายในการทรงตัวและการเคลื่อนไหว โดยการใช้กล้ามเนื้อมัดใหญ่ (Gross Motor Development) เช่น วิ่ง, กระโดด, ปีนป่าย และการใช้กล้ามเนื้อมัดเล็ก มือและตาประสานกันในการทำกิจกรรมต่างๆ (Fine Motor - Adaptive Development) เช่น ระบายสี, ใช้ช้อน, ติดกระดุม</p>
                         </div>
                         <div class="card-footer">
-                            <a href="productPhysical.jsp" class="btn btn-primary">ดูรายการสินค้า</a>
+                            <a href="ProductList?category=1" class="btn btn-primary">ดูรายการสินค้า</a>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                             <p class="card-text">เป็นความสามารถในการสร้างสัมพันธภาพกับผู้อื่น เข้าใจผู้อื่น (personal-social) สามารถช่วยเหลือตนเองในชีวิตประจำวัน (self help, self care) และรู้จักผิดชอบชั่วดี ประกอบด้วย พัฒนาการด้านสังคม (Social Development) และพัฒนาการด้านคุณธรรม (Moral Development)</p>
                         </div>
                         <div class="card-footer">
-                            <a href="productSocial.jsp" class="btn btn-primary">ดูรายการสินค้า</a>
+                            <a href="ProductList?category=2" class="btn btn-primary">ดูรายการสินค้า</a>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                             <p class="card-text">เป็นความสามารถในการแสดงความรู้สึก และควบคุมการแสดงออกของอารมณ์อย่างเหมาะสม ในอารมณ์ต่างๆ เช่น ยิ้ม, ร้องไห้, หัวเราะ, กลัว, เศร้า, เสียใจ, โกรธ รวมถึงการสร้างความรู้สึกที่ดี การนับถือตนเอง (self esteem)</p>
                         </div>
                         <div class="card-footer">
-                            <a href="productEmotional.jsp" class="btn btn-primary">ดูรายการสินค้า</a>
+                            <a href="ProductList?category=3" class="btn btn-primary">ดูรายการสินค้า</a>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                             <p class="card-text">เป็นความสามารถในการเรียนรู้ความสัมพันธ์ระหว่างสิ่งต่างๆ กับตนเอง เป็นกระบวนการทางจิตใจ (mental processes) ที่เราใช้คิด เรียนรู้ หาเหตุผล แก้ไขปัญหา และสื่อสาร ซึ่งประกอบด้วย พัฒนาการด้านภาษา (Language Development) และพัฒนาการด้านกล้ามเนื้อมัดเล็ก (Fine Motor Development)</p>
                         </div>
                         <div class="card-footer">
-                            <a href="productIQ.jsp" class="btn btn-primary">ดูรายการสินค้า</a>
+                            <a href="ProductList?category=4" class="btn btn-primary">ดูรายการสินค้า</a>
                         </div>
                     </div>
                 </div>

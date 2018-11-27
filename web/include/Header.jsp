@@ -29,10 +29,10 @@
                     Product
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                    <a class="dropdown-item" href="productIQ.jsp">ด้านสติปัญญา</a>
-                    <a class="dropdown-item" href="productPhysical.jsp">ด้านร่างกาย</a>
-                    <a class="dropdown-item" href="productEmotional.jsp">ด้านอารมณ์</a>
-                    <a class="dropdown-item" href="productSocial.jsp">ด้านสังคม</a>
+                    <a class="dropdown-item" href="ProductList?category=1">ด้านสติปัญญา</a>
+                    <a class="dropdown-item" href="ProductList?category=2">ด้านร่างกาย</a>
+                    <a class="dropdown-item" href="ProductList?category=3">ด้านอารมณ์</a>
+                    <a class="dropdown-item" href="ProductList?category=4">ด้านสังคม</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -55,8 +55,8 @@
                                 Hello:&nbsp;${account.email}
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="Profile.jsp">Profile</a>
-                                <a class="dropdown-item" href="History.jsp">History</a>
+                                <a class="dropdown-item" href="Profile">Profile</a>
+                                <a class="dropdown-item" href="History">History</a>
                                 <a class="dropdown-item" href="Logout">Logout</a>
 
                             </div>
@@ -64,11 +64,11 @@
                     </c:when>
                     <c:otherwise>
                         <li class="nav-item">
-                            <a class="nav-link" href="login.jsp">Login</a>
+                            <a class="nav-link" href="Login">Login</a>
                         </li>
                         <li class="nav-item nav-link">|</li>
                         <li class="nav-item">
-                            <a class="nav-link" href="register.jsp">Register</a>
+                            <a class="nav-link" href="Register">Register</a>
                         </li>
                     </c:otherwise>
                 </c:choose>
