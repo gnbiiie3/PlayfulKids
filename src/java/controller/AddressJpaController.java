@@ -8,13 +8,15 @@ package controller;
 import controller.exceptions.NonexistentEntityException;
 import controller.exceptions.RollbackFailureException;
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import model.Customer;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.transaction.UserTransaction;
 import model.Address;
 
@@ -36,11 +38,29 @@ public class AddressJpaController implements Serializable {
     }
 
     public void create(Address address) throws RollbackFailureException, Exception {
+        if (address.getCustomerList() == null) {
+            address.setCustomerList(new ArrayList<Customer>());
+        }
         EntityManager em = null;
         try {
             utx.begin();
             em = getEntityManager();
+            List<Customer> attachedCustomerList = new ArrayList<Customer>();
+            for (Customer customerListCustomerToAttach : address.getCustomerList()) {
+                customerListCustomerToAttach = em.getReference(customerListCustomerToAttach.getClass(), customerListCustomerToAttach.getEmail());
+                attachedCustomerList.add(customerListCustomerToAttach);
+            }
+            address.setCustomerList(attachedCustomerList);
             em.persist(address);
+            for (Customer customerListCustomer : address.getCustomerList()) {
+                Address oldLastaddressOfCustomerListCustomer = customerListCustomer.getLastaddress();
+                customerListCustomer.setLastaddress(address);
+                customerListCustomer = em.merge(customerListCustomer);
+                if (oldLastaddressOfCustomerListCustomer != null) {
+                    oldLastaddressOfCustomerListCustomer.getCustomerList().remove(customerListCustomer);
+                    oldLastaddressOfCustomerListCustomer = em.merge(oldLastaddressOfCustomerListCustomer);
+                }
+            }
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -61,7 +81,34 @@ public class AddressJpaController implements Serializable {
         try {
             utx.begin();
             em = getEntityManager();
+            Address persistentAddress = em.find(Address.class, address.getAddressid());
+            List<Customer> customerListOld = persistentAddress.getCustomerList();
+            List<Customer> customerListNew = address.getCustomerList();
+            List<Customer> attachedCustomerListNew = new ArrayList<Customer>();
+            for (Customer customerListNewCustomerToAttach : customerListNew) {
+                customerListNewCustomerToAttach = em.getReference(customerListNewCustomerToAttach.getClass(), customerListNewCustomerToAttach.getEmail());
+                attachedCustomerListNew.add(customerListNewCustomerToAttach);
+            }
+            customerListNew = attachedCustomerListNew;
+            address.setCustomerList(customerListNew);
             address = em.merge(address);
+            for (Customer customerListOldCustomer : customerListOld) {
+                if (!customerListNew.contains(customerListOldCustomer)) {
+                    customerListOldCustomer.setLastaddress(null);
+                    customerListOldCustomer = em.merge(customerListOldCustomer);
+                }
+            }
+            for (Customer customerListNewCustomer : customerListNew) {
+                if (!customerListOld.contains(customerListNewCustomer)) {
+                    Address oldLastaddressOfCustomerListNewCustomer = customerListNewCustomer.getLastaddress();
+                    customerListNewCustomer.setLastaddress(address);
+                    customerListNewCustomer = em.merge(customerListNewCustomer);
+                    if (oldLastaddressOfCustomerListNewCustomer != null && !oldLastaddressOfCustomerListNewCustomer.equals(address)) {
+                        oldLastaddressOfCustomerListNewCustomer.getCustomerList().remove(customerListNewCustomer);
+                        oldLastaddressOfCustomerListNewCustomer = em.merge(oldLastaddressOfCustomerListNewCustomer);
+                    }
+                }
+            }
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -95,6 +142,11 @@ public class AddressJpaController implements Serializable {
                 address.getAddressid();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The address with id " + id + " no longer exists.", enfe);
+            }
+            List<Customer> customerList = address.getCustomerList();
+            for (Customer customerListCustomer : customerList) {
+                customerListCustomer.setLastaddress(null);
+                customerListCustomer = em.merge(customerListCustomer);
             }
             em.remove(address);
             utx.commit();
