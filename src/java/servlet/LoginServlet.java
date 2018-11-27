@@ -49,25 +49,32 @@ public class LoginServlet extends HttpServlet {
         password = cryptWithMD5(password);
 
         HttpSession session = request.getSession(true);
-        if (email != null && password != null ) {
-            AccountJpaController accJpaCtrl = new AccountJpaController(utx, emf);
-            Account account = accJpaCtrl.findAccount(email);
-            if (account != null) {
-                if (password.equalsIgnoreCase(account.getPassword())) {
-                    session.setAttribute("account", account);
-                    getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        if (session.getAttribute("account") == null) {
+            if (email != null && password != null) {
+                AccountJpaController accJpaCtrl = new AccountJpaController(utx, emf);
+                Account account = accJpaCtrl.findAccount(email);
+                if (account != null) {
+                    if (password.equalsIgnoreCase(account.getPassword())) {
+                        session.setAttribute("account", account);
+                        getServletContext().getRequestDispatcher("/Home").forward(request, response);
+                    } else {
+                        request.setAttribute("message", "Invaild Email or Password");
+                        getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+                    }
                 } else {
                     request.setAttribute("message", "Invaild Email or Password");
                     getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
                 }
+
             } else {
-                request.setAttribute("message", "Invaild Email or Password");
                 getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
             }
-
-        } else {
-            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+        }else{
+        getServletContext().getRequestDispatcher("/Home").forward(request, response);
         }
+
+        getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+
     }
 
     public static String cryptWithMD5(String password) {
