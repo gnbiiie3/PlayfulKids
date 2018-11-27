@@ -29,18 +29,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")
-    , @NamedQuery(name = "Customer.findByCustomerid", query = "SELECT c FROM Customer c WHERE c.customerid = :customerid")
+    , @NamedQuery(name = "Customer.findByEmail", query = "SELECT c FROM Customer c WHERE c.email = :email")
     , @NamedQuery(name = "Customer.findByFirstname", query = "SELECT c FROM Customer c WHERE c.firstname = :firstname")
     , @NamedQuery(name = "Customer.findByLastname", query = "SELECT c FROM Customer c WHERE c.lastname = :lastname")
     , @NamedQuery(name = "Customer.findByPhonenumber", query = "SELECT c FROM Customer c WHERE c.phonenumber = :phonenumber")})
 public class Customer implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "CUSTOMERID")
-    private Integer customerid;
+    @Size(min = 1, max = 50)
+    @Column(name = "EMAIL")
+    private String email;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -56,7 +58,7 @@ public class Customer implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "PHONENUMBER")
     private String phonenumber;
-    @JoinColumn(name = "CUSTOMERID", referencedColumnName = "ACCOUNTID", insertable = false, updatable = false)
+    @JoinColumn(name = "EMAIL", referencedColumnName = "EMAIL", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Account account;
     @JoinColumn(name = "LASTADDRESS", referencedColumnName = "ADDRESSID")
@@ -66,23 +68,23 @@ public class Customer implements Serializable {
     public Customer() {
     }
 
-    public Customer(Integer customerid) {
-        this.customerid = customerid;
+    public Customer(String email) {
+        this.email = email;
     }
 
-    public Customer(Integer customerid, String firstname, String lastname, String phonenumber) {
-        this.customerid = customerid;
+    public Customer(String email, String firstname, String lastname, String phonenumber) {
+        this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
         this.phonenumber = phonenumber;
     }
 
-    public Integer getCustomerid() {
-        return customerid;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCustomerid(Integer customerid) {
-        this.customerid = customerid;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstname() {
@@ -128,7 +130,7 @@ public class Customer implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (customerid != null ? customerid.hashCode() : 0);
+        hash += (email != null ? email.hashCode() : 0);
         return hash;
     }
 
@@ -139,7 +141,7 @@ public class Customer implements Serializable {
             return false;
         }
         Customer other = (Customer) object;
-        if ((this.customerid == null && other.customerid != null) || (this.customerid != null && !this.customerid.equals(other.customerid))) {
+        if ((this.email == null && other.email != null) || (this.email != null && !this.email.equals(other.email))) {
             return false;
         }
         return true;
@@ -147,7 +149,7 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Customer[ customerid=" + customerid + " ]";
+        return "model.Customer[ email=" + email + " ]";
     }
     
 }

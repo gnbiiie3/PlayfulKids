@@ -10,9 +10,9 @@ import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -31,16 +31,16 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p")
     , @NamedQuery(name = "Product.findByProductid", query = "SELECT p FROM Product p WHERE p.productid = :productid")
     , @NamedQuery(name = "Product.findByProductname", query = "SELECT p FROM Product p WHERE p.productname = :productname")
-    , @NamedQuery(name = "Product.findByProducttype", query = "SELECT p FROM Product p WHERE p.producttype = :producttype")
+    , @NamedQuery(name = "Product.findByProductforage", query = "SELECT p FROM Product p WHERE p.productforage = :productforage")
+    , @NamedQuery(name = "Product.findByMaterialofproduct", query = "SELECT p FROM Product p WHERE p.materialofproduct = :materialofproduct")
     , @NamedQuery(name = "Product.findByProductdescription", query = "SELECT p FROM Product p WHERE p.productdescription = :productdescription")
-    , @NamedQuery(name = "Product.findByQuantityinstock", query = "SELECT p FROM Product p WHERE p.quantityinstock = :quantityinstock")
     , @NamedQuery(name = "Product.findByProductprice", query = "SELECT p FROM Product p WHERE p.productprice = :productprice")})
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @NotNull
     @Column(name = "PRODUCTID")
     private Integer productid;
     @Basic(optional = false)
@@ -48,23 +48,23 @@ public class Product implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "PRODUCTNAME")
     private String productname;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "PRODUCTTYPE")
-    private String producttype;
+    @Size(max = 3)
+    @Column(name = "PRODUCTFORAGE")
+    private String productforage;
+    @Size(max = 50)
+    @Column(name = "MATERIALOFPRODUCT")
+    private String materialofproduct;
     @Size(max = 500)
     @Column(name = "PRODUCTDESCRIPTION")
     private String productdescription;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "QUANTITYINSTOCK")
-    private short quantityinstock;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Column(name = "PRODUCTPRICE")
     private BigDecimal productprice;
+    @JoinColumn(name = "PRODUCTCATEGORY", referencedColumnName = "CATEGORYID")
+    @ManyToOne(optional = false)
+    private Category productcategory;
 
     public Product() {
     }
@@ -73,11 +73,9 @@ public class Product implements Serializable {
         this.productid = productid;
     }
 
-    public Product(Integer productid, String productname, String producttype, short quantityinstock, BigDecimal productprice) {
+    public Product(Integer productid, String productname, BigDecimal productprice) {
         this.productid = productid;
         this.productname = productname;
-        this.producttype = producttype;
-        this.quantityinstock = quantityinstock;
         this.productprice = productprice;
     }
 
@@ -97,12 +95,20 @@ public class Product implements Serializable {
         this.productname = productname;
     }
 
-    public String getProducttype() {
-        return producttype;
+    public String getProductforage() {
+        return productforage;
     }
 
-    public void setProducttype(String producttype) {
-        this.producttype = producttype;
+    public void setProductforage(String productforage) {
+        this.productforage = productforage;
+    }
+
+    public String getMaterialofproduct() {
+        return materialofproduct;
+    }
+
+    public void setMaterialofproduct(String materialofproduct) {
+        this.materialofproduct = materialofproduct;
     }
 
     public String getProductdescription() {
@@ -113,20 +119,20 @@ public class Product implements Serializable {
         this.productdescription = productdescription;
     }
 
-    public short getQuantityinstock() {
-        return quantityinstock;
-    }
-
-    public void setQuantityinstock(short quantityinstock) {
-        this.quantityinstock = quantityinstock;
-    }
-
     public BigDecimal getProductprice() {
         return productprice;
     }
 
     public void setProductprice(BigDecimal productprice) {
         this.productprice = productprice;
+    }
+
+    public Category getProductcategory() {
+        return productcategory;
+    }
+
+    public void setProductcategory(Category productcategory) {
+        this.productcategory = productcategory;
     }
 
     @Override

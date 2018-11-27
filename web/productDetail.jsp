@@ -27,12 +27,12 @@
                         ประเภทสินค้า
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="productIQ.jsp">ด้านสติปัญญา</a>
-                        <a class="dropdown-item" href="productPhysical.jsp">ด้านร่างกาย</a>
-                        <a class="dropdown-item" href="productEmotional.jsp">ด้านอารมณ์</a>
-                        <a class="dropdown-item" href="productSocial.jsp">ด้านสังคม</a>
+                        <a class="dropdown-item" href="ProductList?category=1">ด้านสติปัญญา</a>
+                        <a class="dropdown-item" href="ProductList?category=1">ด้านร่างกาย</a>
+                        <a class="dropdown-item" href="ProductList?category=1">ด้านอารมณ์</a>
+                        <a class="dropdown-item" href="ProductList?category=1">ด้านสังคม</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="productPage.jsp">ดูทั้งหมด</a>
+                        <a class="dropdown-item" href="ProductList">ดูทั้งหมด</a>
                     </div>
                 </div>
                 <button type="button" class="btn btn-primary">ตัวเลือกการค้นหา</button>
