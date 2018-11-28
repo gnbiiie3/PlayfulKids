@@ -21,12 +21,20 @@
         <servlet-class>servlet.ProductListServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SearchProductByNameServlet</servlet-name>
-        <servlet-class>controller.SearchProductByNameServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>HomeServlet</servlet-name>
         <servlet-class>servlet.HomeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductDetailServlet</servlet-name>
+        <servlet-class>servlet.ProductDetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchProductByNameServlet</servlet-name>
+        <servlet-class>servlet.SearchProductByNameServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <servlet-class>servlet.AddToCartServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ActivateServlet</servlet-name>
@@ -49,12 +57,20 @@
         <url-pattern>/ProductList</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SearchProductByNameServlet</servlet-name>
-        <url-pattern>/SearchProductByName</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/Home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductDetailServlet</servlet-name>
+        <url-pattern>/ProductDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchProductByNameServlet</servlet-name>
+        <url-pattern>/Search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <url-pattern>/AddToCart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -36,13 +36,17 @@
                 </div>
                 <button type="button" class="btn btn-primary">ตัวเลือกการค้นหา</button>
                 <li class="ml-auto">
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="ชื่อ หรือคำค้นหาสินค้า" aria-label="Search">
+                   <form class="form-inline" action="Search" method="get">
+                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="ชื่อ หรือคำค้นหาสินค้า" aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">ค้นหา</button>
                     </form>  
                 </li>
             </ol>
-
+            
+            <c:if test="${category}=1">
+               <img class="img-fluid rounded mb-4" src="http://placehold.it/1200x300" alt="">
+            </c:if>
+            
             <div class="row">
                 <c:forEach items="${product}" var="product" varStatus="i">
                     <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" style="margin-bottom: 15px;">

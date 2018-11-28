@@ -6,6 +6,7 @@
 package servlet;
 
 import controller.AccountJpaController;
+import controller.CustomerJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.MessageDigest;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 import model.Account;
+import model.Customer;
 
 /**
  *
@@ -46,18 +48,26 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
 
         HttpSession session = request.getSession(true);
         if (session.getAttribute("account") == null) {
             if (email != null && password != null) {
                 password = cryptWithMD5(password);
                 AccountJpaController accJpaCtrl = new AccountJpaController(utx, emf);
+                CustomerJpaController cusJpaCtrl = new CustomerJpaController(utx, emf);
                 Account account = accJpaCtrl.findAccount(email);
                 if (account != null) {
                     if (password.equalsIgnoreCase(account.getPassword())) {
                         session.setAttribute("account", account);
-                        getServletContext().getRequestDispatcher("/Home").forward(request, response);
+                        Customer customer = cusJpaCtrl.findCustomer(email);
+                        if (customer != null) {
+                            session.setAttribute("customer", customer);
+                            getServletContext().getRequestDispatcher("/Home").forward(request, response);
+                        } else {
+                            request.setAttribute("message", "Something Wrong");
+                            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+                        }
+
                     } else {
                         request.setAttribute("message", "Invaild Email or Password");
                         getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
