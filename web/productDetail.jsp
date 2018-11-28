@@ -37,8 +37,8 @@
                 </div>
                 <button type="button" class="btn btn-primary">ตัวเลือกการค้นหา</button>
                 <li class="ml-auto">
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="ชื่อ หรือคำค้นหาสินค้า" aria-label="Search">
+                    <form class="form-inline" action="Search" method="get">
+                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="ชื่อ หรือคำค้นหาสินค้า" aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">ค้นหา</button>
                     </form>  
                 </li>

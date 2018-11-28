@@ -52,7 +52,7 @@
                     <c:when test ="${account != null}">
                         <div class="dropdown" >
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Hello:&nbsp;${account.email}
+                                Hello:&nbsp;${customer.firstname}
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="Profile">Profile</a>

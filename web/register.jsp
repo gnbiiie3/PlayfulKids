@@ -24,7 +24,7 @@
     <body style="margin-top: 100px;" class="d-flex justify-content-center">
 
         <h1 style="margin-top: 50px; margin-right: 100px;">Register</h1>
-        <form action="Login" method="post">
+        <form action="Register" method="post">
             <div style="width: 300px; text-align: left;">
                 <p>
                     Email : <input type="text" name="email" style="height: 20px" required/> 
