@@ -105,7 +105,7 @@ public class RegisterServlet extends HttpServlet {
                         cusJpaCtrl.create(newCustomer);
                         accJpaCtrl.create(newAccount);
                         session.setAttribute("newaccount", newAccount);
-                        getServletContext().getRequestDispatcher("/registercomplete.jsp").forward(request, response);
+                        getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
                     } catch (RollbackFailureException ex) {
                         Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (Exception ex) {
