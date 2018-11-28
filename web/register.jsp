@@ -1,4 +1,4 @@
-n<%-- 
+<%-- 
     Document   : register
     Created on : Nov 15, 2018, 11:22:13 PM
     Author     : jenny
@@ -21,7 +21,7 @@ n<%--
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Register</title>
     </head>
-    <body style="margin-top: 100px;" class="d-flex justify-content-center">
+    <body style="margin-top: 100px; background-image: url('pic/pinkregis.jpg'); background-size: cover; " class="d-flex justify-content-center">
 
         <h1 style="margin-top: 50px; margin-right: 100px;">Register</h1>
         <form action="Login" method="post">

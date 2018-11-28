@@ -115,7 +115,7 @@
             <!-- Portfolio Section -->
             <h2>สินค้าแนะนำ</h2>
 
-            <div class="row">
+            <div class="row" style="background-color: #5faaa7">
                 <div class="col-lg-4 col-sm-6 portfolio-item" style="margin-bottom: 70px;">
                     <div class="card h-100">
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
@@ -224,15 +224,7 @@
 
             <hr>
 
-            <!-- Call to Action Section -->
-            <div class="row mb-4">
-                <div class="col-md-8">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
-                </div>
-                <div class="col-md-4">
-                    <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
-                </div>
-            </div>
+           
 
         </div>
     </body>

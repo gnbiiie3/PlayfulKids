@@ -11,16 +11,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Playful Kids : รายการสินค้าด้านสติปัญญา</title>
     </head>
-    <body style="margin-top: 70px;">
+    <body style="margin-top: 70px; background-color:#ffca03 ">
         <%@include file="include/Header.jsp" %>
-        <div class="container">
+        <div class="container" style="background-color: #ffca03">
 
             <!-- Page Heading/Breadcrumbs -->
             <h1 class="mt-4 mb-3">สินค้าของเล่น
                 <small>ด้านสติปัญญา</small>
             </h1>
 
-            <ol class="breadcrumb">
+            <ol class="breadcrumb" style="background-color: #223F4A">
                 <!-- Example single danger button -->
                 <div class="btn-group"style="margin-right: 8px;">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,17 +33,17 @@
                         <a class="dropdown-item" href="productSocial.jsp">ด้านสังคม</a>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary">ตัวเลือกการค้นหา</button>
+                <button type="button" class="btn btn-primary" style="background-color: #009bd0">ตัวเลือกการค้นหา</button>
                 <li class="ml-auto">
                     <form class="form-inline">
                         <input class="form-control mr-sm-2" type="search" placeholder="ชื่อ หรือคำค้นหาสินค้า" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">ค้นหา</button>
+                        <button class="btn btn-success" type="submit" style="background-color: #bbcf00 !important; color: black !important;">ค้นหา</button>
                     </form>  
                 </li>
             </ol>
 
             <!-- Image Header -->
-            <img class="img-fluid rounded mb-4" src="http://placehold.it/1200x300" alt="">
+            <img class="img-fluid rounded mb-4" src="pic/headeriq.jpg" alt="">
 
             <!-- Marketing Icons Section -->
             <div class="row">
