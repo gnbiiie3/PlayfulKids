@@ -33,13 +33,12 @@
                     <a class="dropdown-item" href="ProductList?category=2">ด้านร่างกาย</a>
                     <a class="dropdown-item" href="ProductList?category=3">ด้านอารมณ์</a>
                     <a class="dropdown-item" href="ProductList?category=4">ด้านสังคม</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="ProductList">ดูทั้งหมด</a>
                 </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="about.jsp">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
             </li>
         </ul>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,9 +55,11 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="Profile">Profile</a>
+                                <a class="dropdown-item" href="cart.jsp">My Cart</a>
                                 <a class="dropdown-item" href="History">History</a>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="Logout">Logout</a>
-
+                                
                             </div>
                         </div>
                     </c:when>
