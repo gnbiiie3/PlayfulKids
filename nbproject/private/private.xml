@@ -10,11 +10,9 @@
             <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/SearchProductByNameServlet.java</file>
         </group>
         <group>
-            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/LoginServlet.java</file>
-            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/LogoutServlet.java</file>
-            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/HomeServlet.java</file>
-            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/web/result.jsp</file>
-            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/SearchProductByNameServlet.java</file>
+            <file>file:/Users/jenny/NetBeansProjects/PlayfulKids/web/result.jsp</file>
+            <file>file:/Users/jenny/NetBeansProjects/PlayfulKids/src/java/servlet/ProductListServlet.java</file>
+            <file>file:/Users/jenny/NetBeansProjects/PlayfulKids/src/java/servlet/RegisterServlet.java</file>
         </group>
     </open-files>
 </project-private>
