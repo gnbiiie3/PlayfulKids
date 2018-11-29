@@ -24,7 +24,7 @@ import model.Product;
  *
  * @author kanisorn
  */
-public class AddToCartServlet extends HttpServlet {
+public class RemoveProductFromCartServlet extends HttpServlet {
 
     @PersistenceUnit(unitName = "PlayfulKidsPU")
     EntityManagerFactory emf;
@@ -44,27 +44,18 @@ public class AddToCartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession(true);
+        HttpSession session = request.getSession();
 
         if (session.getAttribute("account") != null) {
-
             Cart cart = (Cart) session.getAttribute("cart");
-
-            if (cart == null) {
-                cart = new Cart();
-                session.setAttribute("cart", cart);
-            }
-
-            String receiveProduct = request.getParameter("productid");
-            int productId = Integer.parseInt(receiveProduct);
-            ProductJpaController proJpaCtrl = new ProductJpaController(utx, emf);
-            Product product = proJpaCtrl.findProduct(productId);
-
-            cart.add(product);
+            ProductJpaController productJpaCtrl = new ProductJpaController(utx, emf);
+            String productId = request.getParameter("productid");
+            Product product = productJpaCtrl.findProduct(Integer.parseInt(productId));
+            cart.remove(product);
             session.setAttribute("cart", cart);
 
             getServletContext().getRequestDispatcher("/Cart").forward(request, response);
+
         } else {
             getServletContext().getRequestDispatcher("/Login").forward(request, response);
         }

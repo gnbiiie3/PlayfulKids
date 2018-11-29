@@ -24,6 +24,24 @@
             <file>file:/Users/jenny/NetBeansProjects/PlayfulKids/web/login.jsp</file>
             <file>file:/Users/jenny/NetBeansProjects/PlayfulKids/web/index.jsp</file>
             <file>file:/Users/jenny/NetBeansProjects/PlayfulKids/web/include/Header.jsp</file>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/LoginServlet.java</file>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/model/Product.java</file>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/HomeServlet.java</file>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/web/WEB-INF/web.xml</file>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/CartServlet.java</file>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/web/cart.jsp</file>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/AddToCartServlet.java</file>
+        </group>
+        <group>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/LoginServlet.java</file>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/model/Product.java</file>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/RegisterServlet.java</file>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/HomeServlet.java</file>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/web/WEB-INF/web.xml</file>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/CartServlet.java</file>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/AddAddressServlet.java</file>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/web/cart.jsp</file>
+            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/AddToCartServlet.java</file>
         </group>
     </open-files>
 </project-private>
