@@ -83,7 +83,7 @@
                     <div class="col-6" pb-1>
                         <input class="form-control mr-sm-2" type="name" name="receivername" placeholder="รหัส CVC">
                     </div>
-                    <!-- ตัวฟอร์มกรอกชำระ -->
+                    <!-- ตัวฟอร์มกรอกชำระ -->d
                 </div>
             </div>
         </div>

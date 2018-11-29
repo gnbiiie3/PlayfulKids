@@ -8,87 +8,104 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>PlayfulKids : My Cart</title>
-    </head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>PlayfulKids : My Cart</title>
+</head>
 
-    <body style="margin-top: 70px;">
-        <%@include file="include/Header.jsp" %>
-        <div class="container">
-            <div class="row">
+<body style="margin-top: 70px;">
+    <%@include file="include/Header.jsp" %>
+    <div class="container">
+        <div class="row">
 
 
 
-                <!-- Post Content Column -->
-                <div class="col" style="height: 100vh;">
+            <!-- Post Content Column -->
+            <div class="col" style="height: 100vh;">
 
-                    <!-- Title -->
-                    <h1 class="mt-4">My Cart</h1>
+                <!-- Title -->
+                <h1 class="mt-4">My Cart</h1>
 
-                    <!-- Author -->
-                    <p class="lead">
-                        รายการสั่งซื้อภายในตะกร้าของคุณ
-                    </p>
-                    <hr>
+                <!-- Author -->
+                <p class="lead">
+                    รายการสั่งซื้อภายในตะกร้าของคุณ
+                </p>
+                <hr>
 
-                    <div class="row" style="text-align: center; font-weight: bold">
-                        <div class="col-3">ภาพตัวอย่าง</div>
-                        <div class="col-4">ชื่อสินค้า</div>
-                        <div class="col-2">จำนวน</div>
-                        <div class="col-2">ราคา/หน่วย</div>
-                        <div class="col-1"></div>
+                <div class="row" style="text-align: center; font-weight: bold">
+                    <div class="col-3">ภาพตัวอย่าง</div>
+                    <div class="col-4">ชื่อสินค้า</div>
+                    <div class="col-2">จำนวน</div>
+                    <div class="col-2">ราคา/หน่วย</div>
+                    <div class="col-1"></div>
+                </div>
+                <hr>
+
+                <c:forEach items="${cart.lineItems}" var="product" varStatus="i">
+
+                    <div class="row" style="text-align: center;">
+                        <div class="col-3"><img class="img-thumbnail" src="product/${product.product.productid}.jpg"
+                                alt="" /></div>
+                        <div class="col-4">${product.product.productname}<br>${product.product.productdescription}</div>
+                        <div class="col-2">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    Action
+                                </button>
+                                <div class="dropdown-menu">
+                                    <span>1</span>
+                                    <span>2</span>
+                                    <span>3</span>
+                                    <span>4</span>
+                                    <span>5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">${product.product.productprice}</div>
+                        <div class="col-1"><a href="RemoveProductFromCart?productid=${product.product.productid}" class="btn btn-danger"
+                                role="button">X</a></div>
                     </div>
                     <hr>
+                </c:forEach>
 
-                    <c:forEach items="${cart.lineItems}" var="product" varStatus="i">
-                        
-                              <div class="row" style="text-align: center;">
-                                <div class="col-3"><img class="img-thumbnail" src="product/${product.product.productid}.jpg" alt="" /></div>
-                                <div class="col-4">${product.product.productname}<br>${product.product.productdescription}</div>
-                                <div class="col-2">1</div>
-                                <div class="col-2">${product.product.productprice}</div>
-                                <div class="col-1"><a href="RemoveProductFromCart?productid=${product.product.productid}" class="btn btn-danger" role="button">X</a></div>
-                            </div>
-                            <hr>
-                        </c:forEach>
+                <div class="row" style="text-align: center;">
+                    <c:set var="total" value="${0}" />
+                    <c:forEach var="article" items="${cart.lineItems}">
+                        <c:set var="total" value="${total + article.totalPrice}" />
+                    </c:forEach>
 
-                        <div class="row" style="text-align: center;">
-                            <c:set var="total" value="${0}"/>
-                            <c:forEach var="article" items="${cart.lineItems}">
-                                <c:set var="total" value="${total + article.totalPrice}" />
-                            </c:forEach>
-
-                            <div class="col-3"></div>
-                            <div class="col-4"></div>
-                            <div class="col-5">
-                                <div class="row">
-                                    <div class="col-6">ราคาสุทธิ</div>
-                                    <div class="col-6"><c:out value ="${total}"/> บาท</div>
-                                </div>
-                                <div class="row" style="margin-top: 25px;">
-                                    <div class="col-6"></div>
-                                    <div class="col-6"><button type="button" class="btn btn-success">ชำระเงินค่าสินค้า</button></div>
-                                </div>
-                            </div>
+                    <div class="col-3"></div>
+                    <div class="col-4"></div>
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-6">ราคาสุทธิ</div>
+                            <div class="col-6">
+                                <c:out value="${total}" /> บาท</div>
                         </div>
-                        <hr>
+                        <div class="row" style="margin-top: 25px;">
+                            <div class="col-6"></div>
+                            <div class="col-6"><button type="button" class="btn btn-success">ชำระเงินค่าสินค้า</button></div>
                         </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
 
 
 
 
 
+        </div>
+        <!-- /.container -->
+
+        <!-- Footer -->
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
             </div>
             <!-- /.container -->
-
-            <!-- Footer -->
-            <footer class="py-5 bg-dark">
-                <div class="container">
-                    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
-                </div>
-                <!-- /.container -->
-            </footer>
-    </body>
+        </footer>
+</body>
 
 </html>
