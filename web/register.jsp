@@ -35,7 +35,7 @@
                     Password : <input type="password" name="password" style="height: 20px" required/>
                 </p>
                 <p>
-                    Confirm Password : <input type="password" name="comfirmpassword" style="height: 20px" required/>
+                    Confirm Password : <input type="password" name="confirmpassword" style="height: 20px" required/>
                 </p>
                 <p>
                     ชื่อ : <input type="text" name="firstname" style="height: 20px" required/>
