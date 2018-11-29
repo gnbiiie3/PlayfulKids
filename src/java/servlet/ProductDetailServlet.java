@@ -8,17 +8,13 @@ package servlet;
 import controller.ProductJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Resource;
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 import model.Product;
 
@@ -26,12 +22,14 @@ import model.Product;
  *
  * @author kanisorn
  */
-public class SearchProductByNameServlet extends HttpServlet {
-    @PersistenceUnit (unitName = "PlayfulKidsPU")
+public class ProductDetailServlet extends HttpServlet {
+
+    @PersistenceUnit(unitName = "PlayfulKidsPU")
     EntityManagerFactory emf;
-    
+
     @Resource
     UserTransaction utx;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,23 +41,20 @@ public class SearchProductByNameServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession();
-        String searchName = request.getParameter("search");
-        ProductJpaController proJpaCtrl = new ProductJpaController(utx,emf);
-        List<Product> allProduct = proJpaCtrl.findProductEntities();
-        List<Product> foundProduct = new ArrayList<Product>();
-        
-        for (Product product : allProduct) {
-            if (product.getProductname().equalsIgnoreCase(searchName)) {
-                foundProduct.add(product);
+        String receiverParameter = request.getParameter("productid");
+        if (receiverParameter != null) {
+            int productid = Integer.parseInt(receiverParameter);
+            ProductJpaController proJpaCtrl = new ProductJpaController(utx, emf);
+            Product product = proJpaCtrl.findProduct(productid);
+            if (product != null) {
+                request.setAttribute("product", product);
+                getServletContext().getRequestDispatcher("/ProductList").forward(request, response);
+                
             }
+        } else {
+            getServletContext().getRequestDispatcher("/ProductList").forward(request, response);
         }
-        session.setAttribute("search", searchName);
-        session.setAttribute("product", foundProduct);
-        getServletContext().getRequestDispatcher("/result.jsp").forward(request, response);
     }
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -55,8 +55,7 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String confirmPassword = request.getParameter("confirmPassword");
-
+        String confirmPassword = request.getParameter("confirmpassword");
         String phoneNumber = request.getParameter("phonenumber");
         String firstName = request.getParameter("firstname");
         String lastName = request.getParameter("lastname");
@@ -68,11 +67,11 @@ public class RegisterServlet extends HttpServlet {
         String postalCode = request.getParameter("postalcode");
 
         HttpSession session = request.getSession(false);
+        
         if (email != null && password != null && confirmPassword != null && phoneNumber != null && firstName != null && lastName != null & addressLine1 != null && district != null && city != null && province != null && postalCode != null) {
             password = cryptWithMD5(password);
             confirmPassword = cryptWithMD5(confirmPassword);
             if (password.equals(confirmPassword)) {
-
                 if (email != null) {
                     AccountJpaController accJpaCtrl = new AccountJpaController(utx, emf);
                     AddressJpaController addJpaCtrl = new AddressJpaController(utx, emf);
@@ -87,6 +86,7 @@ public class RegisterServlet extends HttpServlet {
                     Account newAccount = new Account();
                     Address newAddress = new Address();
                     Customer newCustomer = new Customer();
+                    newAddress.setReceivername(firstName + "  " + lastName);
                     newAddress.setAddressline1(addressLine1);
                     newAddress.setAddressline2(addressLine2);
                     newAddress.setDistrict(district);
@@ -97,6 +97,7 @@ public class RegisterServlet extends HttpServlet {
                     newCustomer.setLastname(lastName);
                     newCustomer.setPhonenumber(phoneNumber);
                     newCustomer.setLastaddress(newAddress);
+                    newCustomer.setEmail(email);
                     newAccount.setEmail(email);
                     newAccount.setPassword(password);
 
@@ -104,8 +105,8 @@ public class RegisterServlet extends HttpServlet {
                         addJpaCtrl.create(newAddress);
                         cusJpaCtrl.create(newCustomer);
                         accJpaCtrl.create(newAccount);
-                        session.setAttribute("newaccount", newAccount);
-                        getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+                        session.setAttribute("account", newAccount);
+                        getServletContext().getRequestDispatcher("Home").forward(request, response);
                     } catch (RollbackFailureException ex) {
                         Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (Exception ex) {
@@ -118,7 +119,6 @@ public class RegisterServlet extends HttpServlet {
                 getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);
             }
         } else {
-            request.setAttribute("message", "คุณยังกรอกข้อมูลไม่ครบถ้วน");
             getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);
         }
     }

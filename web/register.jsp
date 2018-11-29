@@ -22,18 +22,19 @@
         <title>Register</title>
     </head>
     <body style="margin-top: 100px; background-image: url('pic/pinkregis.jpg'); background-size: cover; " class="d-flex justify-content-center">
+    
 
         <h1 style="margin-top: 50px; margin-right: 100px;">Register</h1>
-        <form action="RegisterServlet" method="post">
+        <form action="Register" method="post">
             <div style="width: 300px; text-align: left;">
                 <p>
                     Email : <input type="text" name="email" style="height: 20px" required/> 
                 </p>
                 <p>
-                    Password : <input type="text" name="password" style="height: 20px" required/>
+                    Password : <input type="password" name="password" style="height: 20px" required/>
                 </p>
                 <p>
-                    Confirm Password : <input type="text" name="comfirmPassword" style="height: 20px" required/>
+                    Confirm Password : <input type="password" name="comfirmpassword" style="height: 20px" required/>
                 </p>
                 <p>
                     ชื่อ : <input type="text" name="firstname" style="height: 20px" required/>
