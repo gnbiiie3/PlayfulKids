@@ -40,8 +40,9 @@
                     <div class="col-1"></div>
                 </div>
                 <hr>
-
+                
                 <c:forEach items="${cart.lineItems}" var="product" varStatus="i">
+                    ${product.quantity}
 
                     <div class="row" style="text-align: center;">
                         <div class="col-2"><img class="img-thumbnail" src="product/${product.product.productid}.jpg"
@@ -53,7 +54,7 @@
                                     <div class="col-1"><button type="button" class="btn btn-info">+</button></div>
                                 </div>
                         </div>
-                        <div class="col-2">${product.product.productprice}</div>
+                        <div class="col-2">${product.salePrice}</div>
                         <div class="col-1"><a href="RemoveProductFromCart?productid=${product.product.productid}" class="btn btn-danger"
                                 role="button">X</a></div>
                     </div>

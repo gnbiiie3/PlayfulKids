@@ -30,6 +30,7 @@ public class Cart implements Serializable {
         LineItem line = cart.get(p.getProductid());
         if (line == null) {
             cart.put(p.getProductname(), new LineItem(p));
+            
         } else {
             line.setQuantity(line.getQuantity() + 1);
         }
