@@ -69,7 +69,6 @@
                                 <div class="row" style="margin-top: 25px;">
                                     <div class="col-6"></div>
                                     <div class="col-6"><button type="button" class="btn btn-success">ชำระเงินค่าสินค้า</button></div>
-
                                 </div>
                             </div>
                         </div>
