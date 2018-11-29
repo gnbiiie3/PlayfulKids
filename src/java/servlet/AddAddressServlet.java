@@ -5,9 +5,14 @@
  */
 package servlet;
 
-import controller.ProductJpaController;
+import controller.AddressJpaController;
+import controller.CustomerJpaController;
+import controller.exceptions.NonexistentEntityException;
+import controller.exceptions.RollbackFailureException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -17,14 +22,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
-import model.Cart;
-import model.Product;
+import model.Address;
+import model.Customer;
 
 /**
  *
  * @author kanisorn
  */
-public class AddToCartServlet extends HttpServlet {
+public class AddAddressServlet extends HttpServlet {
 
     @PersistenceUnit(unitName = "PlayfulKidsPU")
     EntityManagerFactory emf;
@@ -43,27 +48,45 @@ public class AddToCartServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession(true);
-
-        Cart cart = (Cart) session.getAttribute("cart");
-        
-        if (cart == null) {
-            cart = new Cart();
-            session.setAttribute("cart", cart);
+        HttpSession session = request.getSession();
+        if (session != null) {
+            Customer customer = (Customer) session.getAttribute("customer");
+            AddressJpaController addJpaCtrl = new AddressJpaController(utx, emf);
+            CustomerJpaController cusJpaCtrl = new CustomerJpaController(utx, emf);
+            String receivername = request.getParameter("receivername");
+            String addressLine1 = request.getParameter("addressline1");
+            String addressLine2 = request.getParameter("addressline2");
+            String district = request.getParameter("district");
+            String city = request.getParameter("city");
+            String province = request.getParameter("province");
+            String postalCode = request.getParameter("postalcode");
+            Address newAddress = new Address();
+            newAddress.setReceivername(receivername);
+            newAddress.setAddressline1(addressLine1);
+            newAddress.setAddressline2(addressLine2);
+            newAddress.setDistrict(district);
+            newAddress.setCity(city);
+            newAddress.setProvince(province);
+            newAddress.setPostalcode(postalCode);
+            customer.setLastaddress(newAddress);
+            
+            try {
+                addJpaCtrl.create(newAddress);
+                cusJpaCtrl.edit(customer);
+                session.setAttribute("customer", customer);
+                session.setAttribute("address", newAddress);
+                getServletContext().getRequestDispatcher("Cart").forward(request, response);
+            } catch (NonexistentEntityException ex) {
+                Logger.getLogger(AddAddressServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (RollbackFailureException ex) {
+                Logger.getLogger(AddAddressServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(AddAddressServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }else{
+        getServletContext().getRequestDispatcher("/Login").forward(request, response);
         }
-        
-        String receiveProduct = request.getParameter("productid");
-        int productId = Integer.parseInt(receiveProduct);
-        ProductJpaController proJpaCtrl = new ProductJpaController(utx, emf);
-        Product product = proJpaCtrl.findProduct(productId);
-
-        cart.add(product);
-        session.setAttribute("cart", cart);
-
-        getServletContext().getRequestDispatcher("/Cart").forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

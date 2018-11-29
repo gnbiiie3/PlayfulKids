@@ -55,7 +55,7 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="Profile">Profile</a>
-                                <a class="dropdown-item" href="cart.jsp">My Cart</a>
+                                <a class="dropdown-item" href="Cart">My Cart</a>
                                 <a class="dropdown-item" href="History">History</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="Logout">Logout</a>

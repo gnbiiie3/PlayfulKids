@@ -24,7 +24,7 @@ import model.Product;
  *
  * @author kanisorn
  */
-public class AddToCartServlet extends HttpServlet {
+public class RemoveProductFromCartServlet extends HttpServlet {
 
     @PersistenceUnit(unitName = "PlayfulKidsPU")
     EntityManagerFactory emf;
@@ -43,27 +43,24 @@ public class AddToCartServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession(true);
-
-        Cart cart = (Cart) session.getAttribute("cart");
+        String operator = request.getParameter("operator");
+        String url = request.getParameter("url");
+        HttpSession session = request.getSession();
         
-        if (cart == null) {
-            cart = new Cart();
+        if (operator.equalsIgnoreCase("remove")) {
+            Cart cart = (Cart) session.getAttribute("cart");
+            ProductJpaController productJpaCtrl = new ProductJpaController(utx, emf);
+            String productId = request.getParameter("productId");
+            Product product = productJpaCtrl.findProduct(Integer.parseInt(productId));
+            System.out.println(cart.getTotalQuantity());
+            cart.minus(product);
+            System.out.println(cart.getTotalQuantity());
             session.setAttribute("cart", cart);
+            
+            
+            getServletContext().getRequestDispatcher("/" + url).forward(request, response);
+
         }
-        
-        String receiveProduct = request.getParameter("productid");
-        int productId = Integer.parseInt(receiveProduct);
-        ProductJpaController proJpaCtrl = new ProductJpaController(utx, emf);
-        Product product = proJpaCtrl.findProduct(productId);
-
-        cart.add(product);
-        session.setAttribute("cart", cart);
-
-        getServletContext().getRequestDispatcher("/Cart").forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

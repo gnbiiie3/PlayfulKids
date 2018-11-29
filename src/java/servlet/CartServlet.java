@@ -5,7 +5,7 @@
  */
 package servlet;
 
-import controller.ProductJpaController;
+import controller.AddressJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.annotation.Resource;
@@ -17,21 +17,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
+import model.Account;
+import model.Address;
 import model.Cart;
-import model.Product;
+import model.Customer;
 
 /**
  *
  * @author kanisorn
  */
-public class AddToCartServlet extends HttpServlet {
+public class CartServlet extends HttpServlet {
 
     @PersistenceUnit(unitName = "PlayfulKidsPU")
     EntityManagerFactory emf;
-
+    
     @Resource
     UserTransaction utx;
-
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,27 +45,26 @@ public class AddToCartServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession(true);
-
-        Cart cart = (Cart) session.getAttribute("cart");
         
-        if (cart == null) {
-            cart = new Cart();
-            session.setAttribute("cart", cart);
+        HttpSession session = request.getSession(false);
+        
+        AddressJpaController addJpaCtrl = new AddressJpaController(utx, emf);
+        Customer customer = (Customer) session.getAttribute("customer");
+        Address lastAddress = addJpaCtrl.findAddress(customer.getLastaddress().getAddressid());
+        request.setAttribute("address", lastAddress);
+        
+        if (session != null) {
+            Cart cart = (Cart) session.getAttribute("cart");
+            
+            if (cart != null) {
+                getServletContext().getRequestDispatcher("/cart.jsp").forward(request, response);
+                return;
+            }
         }
-        
-        String receiveProduct = request.getParameter("productid");
-        int productId = Integer.parseInt(receiveProduct);
-        ProductJpaController proJpaCtrl = new ProductJpaController(utx, emf);
-        Product product = proJpaCtrl.findProduct(productId);
-
-        cart.add(product);
-        session.setAttribute("cart", cart);
-
-        getServletContext().getRequestDispatcher("/Cart").forward(request, response);
-
+        request.setAttribute("message", "คุณยังไม่มีสินค้าในตะกร้าของคุณ");
+        getServletContext().getRequestDispatcher("/cart.jsp").forward(request, response);
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

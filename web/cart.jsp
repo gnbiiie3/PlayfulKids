@@ -44,16 +44,18 @@
                     <div class="col-1"></div>
                 </div>
                 <hr>
-                <!-- for each -->
-                <div class="row" style="text-align: center;">
+               
+                <c:forEach items="${cart.lineItems}" var="product" varStatus="i">
+                    <form action="remove?productid=${product.product.productid}"
+                    <div class="row" style="text-align: center;">
                     <div class="col-3">{}</div>
-                    <div class="col-4">{}</div>
-                    <div class="col-2">{}</div>
-                    <div class="col-2">{}</div>
-                    <div class="col-1"><button type="button" class="btn btn-danger">X</button></div>
-                </div>
+                    <div class="col-4">${product.product.productname}</div>
+                    <div class="col-2">1</div>
+                    <div class="col-2">${product.product.productprice}</div>
+                    <div class="col-1"><button type="button" class="btn btn-danger" type="submit">X</button></div>
+                    </div>
                 <hr>
-                <!-- for each -->
+                </c:forEach>
 
                 <div class="row" style="text-align: center;">
                     <div class="col-3"></div>
@@ -98,12 +100,22 @@
                             <h5>ที่อยู่การจัดส่ง</h5>
                             <div class="row">
                                 <div class="col-1"><input type="radio" name="address" value="oldAddress"></div>
-                                <div class="col-10">217 ถนนเจริญกรุง แขวงยานนาวา เขตสาทร กรุงเทพ 10120</div>
+                                <div class="col-10">ใช้ที่อยู่การจัดส่งล่าสุด<br>${address.receivername}<br>${address.addressline1}${address.addressline2}<br>ตำบล/แขวง : ${address.district}<br>อำเภอ/เขต : ${address.city}<br>${address.province}<br>${address.postalcode}</div>
                             </div>
+                            <form action="AddAddress" method="post">
                             <div class="row" style="margin-top: 15px">
                                 <div class="col-1"><input type="radio" name="address" value="AddAddress"></div>
-                                <div class="col-10"><textarea name="newAddress" style="width:250px; height: 100px;"></textarea></div>
+                                <div class="col-10">ใช้ที่อยู่การจัดส่งใหม่ 
+                                    <input class="form-control mr-sm-2" type="name" name="receivername" placeholder="ชื่อผู้จัดส่ง">
+                                    <input class="form-control mr-sm-2" type="name" name="addressline1" placeholder="ที่อยู่การจัดส่ง">
+                                    <input class="form-control mr-sm-2" type="name" name="district" placeholder="ตำบล/แขวง">
+                                    <input class="form-control mr-sm-2" type="name" name="city" placeholder="อำเภอ/เขต">
+                                    <input class="form-control mr-sm-2" type="name" name="province" placeholder="จังหวัด">
+                                    <input class="form-control mr-sm-2" type="number" name="postalcode" placeholder="รหัสไปรษณีย์">
+                                    <button type="submit" class="btn btn-primary">เพิ่มที่อยู่</button>
+                                </div>
                             </div>
+                        </form>
 
                             <!-- ประเภท -->
                             <h5 style="margin-top: 25px">รูปแบบการจัดส่ง</h5>
