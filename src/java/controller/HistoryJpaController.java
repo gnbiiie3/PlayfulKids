@@ -5,18 +5,21 @@
  */
 package controller;
 
+import controller.exceptions.IllegalOrphanException;
 import controller.exceptions.NonexistentEntityException;
 import controller.exceptions.RollbackFailureException;
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.transaction.UserTransaction;
 import model.Account;
+import model.Historydetail;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.transaction.UserTransaction;
 import model.History;
 
 /**
@@ -37,6 +40,9 @@ public class HistoryJpaController implements Serializable {
     }
 
     public void create(History history) throws RollbackFailureException, Exception {
+        if (history.getHistorydetailList() == null) {
+            history.setHistorydetailList(new ArrayList<Historydetail>());
+        }
         EntityManager em = null;
         try {
             utx.begin();
@@ -46,10 +52,25 @@ public class HistoryJpaController implements Serializable {
                 email = em.getReference(email.getClass(), email.getEmail());
                 history.setEmail(email);
             }
+            List<Historydetail> attachedHistorydetailList = new ArrayList<Historydetail>();
+            for (Historydetail historydetailListHistorydetailToAttach : history.getHistorydetailList()) {
+                historydetailListHistorydetailToAttach = em.getReference(historydetailListHistorydetailToAttach.getClass(), historydetailListHistorydetailToAttach.getProductbuyid());
+                attachedHistorydetailList.add(historydetailListHistorydetailToAttach);
+            }
+            history.setHistorydetailList(attachedHistorydetailList);
             em.persist(history);
             if (email != null) {
                 email.getHistoryList().add(history);
                 email = em.merge(email);
+            }
+            for (Historydetail historydetailListHistorydetail : history.getHistorydetailList()) {
+                History oldHistoryidOfHistorydetailListHistorydetail = historydetailListHistorydetail.getHistoryid();
+                historydetailListHistorydetail.setHistoryid(history);
+                historydetailListHistorydetail = em.merge(historydetailListHistorydetail);
+                if (oldHistoryidOfHistorydetailListHistorydetail != null) {
+                    oldHistoryidOfHistorydetailListHistorydetail.getHistorydetailList().remove(historydetailListHistorydetail);
+                    oldHistoryidOfHistorydetailListHistorydetail = em.merge(oldHistoryidOfHistorydetailListHistorydetail);
+                }
             }
             utx.commit();
         } catch (Exception ex) {
@@ -66,7 +87,7 @@ public class HistoryJpaController implements Serializable {
         }
     }
 
-    public void edit(History history) throws NonexistentEntityException, RollbackFailureException, Exception {
+    public void edit(History history) throws IllegalOrphanException, NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
@@ -74,10 +95,31 @@ public class HistoryJpaController implements Serializable {
             History persistentHistory = em.find(History.class, history.getHistoryid());
             Account emailOld = persistentHistory.getEmail();
             Account emailNew = history.getEmail();
+            List<Historydetail> historydetailListOld = persistentHistory.getHistorydetailList();
+            List<Historydetail> historydetailListNew = history.getHistorydetailList();
+            List<String> illegalOrphanMessages = null;
+            for (Historydetail historydetailListOldHistorydetail : historydetailListOld) {
+                if (!historydetailListNew.contains(historydetailListOldHistorydetail)) {
+                    if (illegalOrphanMessages == null) {
+                        illegalOrphanMessages = new ArrayList<String>();
+                    }
+                    illegalOrphanMessages.add("You must retain Historydetail " + historydetailListOldHistorydetail + " since its historyid field is not nullable.");
+                }
+            }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
+            }
             if (emailNew != null) {
                 emailNew = em.getReference(emailNew.getClass(), emailNew.getEmail());
                 history.setEmail(emailNew);
             }
+            List<Historydetail> attachedHistorydetailListNew = new ArrayList<Historydetail>();
+            for (Historydetail historydetailListNewHistorydetailToAttach : historydetailListNew) {
+                historydetailListNewHistorydetailToAttach = em.getReference(historydetailListNewHistorydetailToAttach.getClass(), historydetailListNewHistorydetailToAttach.getProductbuyid());
+                attachedHistorydetailListNew.add(historydetailListNewHistorydetailToAttach);
+            }
+            historydetailListNew = attachedHistorydetailListNew;
+            history.setHistorydetailList(historydetailListNew);
             history = em.merge(history);
             if (emailOld != null && !emailOld.equals(emailNew)) {
                 emailOld.getHistoryList().remove(history);
@@ -86,6 +128,17 @@ public class HistoryJpaController implements Serializable {
             if (emailNew != null && !emailNew.equals(emailOld)) {
                 emailNew.getHistoryList().add(history);
                 emailNew = em.merge(emailNew);
+            }
+            for (Historydetail historydetailListNewHistorydetail : historydetailListNew) {
+                if (!historydetailListOld.contains(historydetailListNewHistorydetail)) {
+                    History oldHistoryidOfHistorydetailListNewHistorydetail = historydetailListNewHistorydetail.getHistoryid();
+                    historydetailListNewHistorydetail.setHistoryid(history);
+                    historydetailListNewHistorydetail = em.merge(historydetailListNewHistorydetail);
+                    if (oldHistoryidOfHistorydetailListNewHistorydetail != null && !oldHistoryidOfHistorydetailListNewHistorydetail.equals(history)) {
+                        oldHistoryidOfHistorydetailListNewHistorydetail.getHistorydetailList().remove(historydetailListNewHistorydetail);
+                        oldHistoryidOfHistorydetailListNewHistorydetail = em.merge(oldHistoryidOfHistorydetailListNewHistorydetail);
+                    }
+                }
             }
             utx.commit();
         } catch (Exception ex) {
@@ -109,7 +162,7 @@ public class HistoryJpaController implements Serializable {
         }
     }
 
-    public void destroy(Integer id) throws NonexistentEntityException, RollbackFailureException, Exception {
+    public void destroy(Integer id) throws IllegalOrphanException, NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
@@ -120,6 +173,17 @@ public class HistoryJpaController implements Serializable {
                 history.getHistoryid();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The history with id " + id + " no longer exists.", enfe);
+            }
+            List<String> illegalOrphanMessages = null;
+            List<Historydetail> historydetailListOrphanCheck = history.getHistorydetailList();
+            for (Historydetail historydetailListOrphanCheckHistorydetail : historydetailListOrphanCheck) {
+                if (illegalOrphanMessages == null) {
+                    illegalOrphanMessages = new ArrayList<String>();
+                }
+                illegalOrphanMessages.add("This History (" + history + ") cannot be destroyed since the Historydetail " + historydetailListOrphanCheckHistorydetail + " in its historydetailList field has a non-nullable historyid field.");
+            }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
             }
             Account email = history.getEmail();
             if (email != null) {

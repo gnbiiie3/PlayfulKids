@@ -8,7 +8,9 @@ package model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,11 +20,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -65,6 +69,8 @@ public class History implements Serializable {
     @NotNull
     @Column(name = "TOTALQUANTITY")
     private int totalquantity;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "historyid")
+    private List<Historydetail> historydetailList;
     @JoinColumn(name = "EMAIL", referencedColumnName = "EMAIL")
     @ManyToOne(optional = false)
     private Account email;
@@ -122,6 +128,15 @@ public class History implements Serializable {
 
     public void setTotalquantity(int totalquantity) {
         this.totalquantity = totalquantity;
+    }
+
+    @XmlTransient
+    public List<Historydetail> getHistorydetailList() {
+        return historydetailList;
+    }
+
+    public void setHistorydetailList(List<Historydetail> historydetailList) {
+        this.historydetailList = historydetailList;
     }
 
     public Account getEmail() {

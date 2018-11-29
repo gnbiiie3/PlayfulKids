@@ -48,7 +48,7 @@ public class ProductDetailServlet extends HttpServlet {
             Product product = proJpaCtrl.findProduct(productid);
             if (product != null) {
                 request.setAttribute("product", product);
-                getServletContext().getRequestDispatcher("/ProductList").forward(request, response);
+                getServletContext().getRequestDispatcher("/productDetail.jsp").forward(request, response);
                 
             }
         } else {

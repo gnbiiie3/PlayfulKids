@@ -7,7 +7,9 @@ package model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,10 +17,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -51,7 +55,7 @@ public class Product implements Serializable {
     @Size(max = 3)
     @Column(name = "PRODUCTFORAGE")
     private String productforage;
-    @Size(max = 50)
+    @Size(max = 200)
     @Column(name = "MATERIALOFPRODUCT")
     private String materialofproduct;
     @Size(max = 500)
@@ -62,6 +66,8 @@ public class Product implements Serializable {
     @NotNull
     @Column(name = "PRODUCTPRICE")
     private BigDecimal productprice;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productid")
+    private List<Historydetail> historydetailList;
     @JoinColumn(name = "PRODUCTCATEGORY", referencedColumnName = "CATEGORYID")
     @ManyToOne(optional = false)
     private Category productcategory;
@@ -125,6 +131,15 @@ public class Product implements Serializable {
 
     public void setProductprice(BigDecimal productprice) {
         this.productprice = productprice;
+    }
+
+    @XmlTransient
+    public List<Historydetail> getHistorydetailList() {
+        return historydetailList;
+    }
+
+    public void setHistorydetailList(List<Historydetail> historydetailList) {
+        this.historydetailList = historydetailList;
     }
 
     public Category getProductcategory() {
