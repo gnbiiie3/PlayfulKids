@@ -44,23 +44,14 @@
                 <c:forEach items="${cart.lineItems}" var="product" varStatus="i">
 
                     <div class="row" style="text-align: center;">
-                        <div class="col-3"><img class="img-thumbnail" src="product/${product.product.productid}.jpg"
+                        <div class="col-2"><img class="img-thumbnail" src="product/${product.product.productid}.jpg"
                                 alt="" /></div>
-                        <div class="col-4">${product.product.productname}<br>${product.product.productdescription}</div>
-                        <div class="col-2">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    Action
-                                </button>
-                                <div class="dropdown-menu">
-                                    <span>1</span>
-                                    <span>2</span>
-                                    <span>3</span>
-                                    <span>4</span>
-                                    <span>5</span>
+                        <div class="col-2">${product.product.productname}<br>${product.product.productdescription}</div>
+                        <div class="col-5">
+                                <div class="row">
+                                    <div class="col-3"><input class="form-control mr-sm-2" type="number" name="receivername"></div>
+                                    <div class="col-2"><button type="button" class="btn btn-info">+</button></div>
                                 </div>
-                            </div>
                         </div>
                         <div class="col-2">${product.product.productprice}</div>
                         <div class="col-1"><a href="RemoveProductFromCart?productid=${product.product.productid}" class="btn btn-danger"
@@ -97,15 +88,15 @@
 
 
         </div>
-        <!-- /.container -->
+    </div>
+    <!-- /.container -->
 
-        <!-- Footer -->
-        <footer class="py-5 bg-dark">
-            <div class="container">
-                <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
-            </div>
-            <!-- /.container -->
-        </footer>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        </div>
+    </footer>
 </body>
 
 </html>

@@ -78,12 +78,12 @@
                         <input class="form-control mr-sm-2" type="name" name="receivername" placeholder="เลขที่บนบัตร">
                     </div>
                     <div class="col-6" pb-1>
-                        <input class="form-control mr-sm-2" type="name" name="receivername" placeholder="วันหมดอายุ">
+                        <input class="form-control mr-sm-2" type="date" name="receivername" placeholder="วันหมดอายุ">
                     </div>
                     <div class="col-6" pb-1>
                         <input class="form-control mr-sm-2" type="name" name="receivername" placeholder="รหัส CVC">
                     </div>
-                    <!-- ตัวฟอร์มกรอกชำระ -->d
+                    <!-- ตัวฟอร์มกรอกชำระ -->
                 </div>
             </div>
         </div>
