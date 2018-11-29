@@ -30,7 +30,7 @@
             <p>
                 <input type="password" name="password" placeholder="Password" style="height: 20px"/>
             </p>
-            <input type="submit" value="Login" style="margin-top: 5px;"/>
+            <button type="submit" class="btn btn-info" style="margin-top: 5px;">Submit</button>
 
         </form>
     </body>
