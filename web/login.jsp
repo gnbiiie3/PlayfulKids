@@ -28,9 +28,9 @@
                 <input type="text" name="email" placeholder="Email" style="height: 20px"/>
             </p>
             <p>
-                <input type="text" name="password" placeholder="Password" style="height: 20px"/>
+                <input type="password" name="password" placeholder="Password" style="height: 20px"/>
             </p>
-            <input type="submit" value="Submit" style="margin-top: 5px;"/>
+            <input type="submit" value="Login" style="margin-top: 5px;"/>
 
         </form>
     </body>

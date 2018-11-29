@@ -32,10 +32,10 @@
                     Product
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                    <a class="dropdown-item" href="productIQ.jsp">ด้านสติปัญญา</a>
-                    <a class="dropdown-item" href="productPhysical.jsp">ด้านร่างกาย</a>
-                    <a class="dropdown-item" href="productEmotional.jsp">ด้านอารมณ์</a>
-                    <a class="dropdown-item" href="productSocial.jsp">ด้านสังคม</a>
+                    <a class="dropdown-item" href="ProductList?category=1">ด้านสติปัญญา</a>
+                    <a class="dropdown-item" href="ProductList?category=2">ด้านร่างกาย</a>
+                    <a class="dropdown-item" href="ProductList?category=3">ด้านอารมณ์</a>
+                    <a class="dropdown-item" href="ProductList?category=4">ด้านสังคม</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -50,14 +50,38 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="login.jsp">Login</a>
-                </li>
-                <li class="nav-item nav-link">|</li>
-                <li class="nav-item">
-                    <a class="nav-link" href="register.jsp">Register</a>
-                </li>
 
+                <c:choose>
+                    <c:when test ="${account != null}">
+                        <div class="dropdown" >
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Hello:&nbsp;${account.email}
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="Profile">Profile</a>
+                                <a class="dropdown-item" href="History">History</a>
+                                <a class="dropdown-item" href="Logout">Logout</a>
+
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Login">Login</a>
+                        </li>
+                        <li class="nav-item nav-link">|</li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Register">Register</a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+
+                <!--                <li>
+                                    <form class="form-inline">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                    </form>  
+                                </li>-->
 
             </ul>
         </div>

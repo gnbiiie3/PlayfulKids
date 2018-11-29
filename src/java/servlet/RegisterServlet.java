@@ -56,8 +56,7 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
-        password = cryptWithMD5(password);
-        confirmPassword = cryptWithMD5(confirmPassword);
+
         String phoneNumber = request.getParameter("phonenumber");
         String firstName = request.getParameter("firstname");
         String lastName = request.getParameter("lastname");
@@ -70,6 +69,8 @@ public class RegisterServlet extends HttpServlet {
 
         HttpSession session = request.getSession(false);
         if (email != null && password != null && confirmPassword != null && phoneNumber != null && firstName != null && lastName != null & addressLine1 != null && district != null && city != null && province != null && postalCode != null) {
+            password = cryptWithMD5(password);
+            confirmPassword = cryptWithMD5(confirmPassword);
             if (password.equals(confirmPassword)) {
 
                 if (email != null) {
@@ -99,13 +100,12 @@ public class RegisterServlet extends HttpServlet {
                     newAccount.setEmail(email);
                     newAccount.setPassword(password);
 
-
                     try {
                         addJpaCtrl.create(newAddress);
                         cusJpaCtrl.create(newCustomer);
                         accJpaCtrl.create(newAccount);
                         session.setAttribute("newaccount", newAccount);
-                        getServletContext().getRequestDispatcher("/registercomplete.jsp").forward(request, response);
+                        getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
                     } catch (RollbackFailureException ex) {
                         Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (Exception ex) {

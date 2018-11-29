@@ -47,7 +47,7 @@ public class AddressJpaController implements Serializable {
             em = getEntityManager();
             List<Customer> attachedCustomerList = new ArrayList<Customer>();
             for (Customer customerListCustomerToAttach : address.getCustomerList()) {
-                customerListCustomerToAttach = em.getReference(customerListCustomerToAttach.getClass(), customerListCustomerToAttach.getCustomerid());
+                customerListCustomerToAttach = em.getReference(customerListCustomerToAttach.getClass(), customerListCustomerToAttach.getEmail());
                 attachedCustomerList.add(customerListCustomerToAttach);
             }
             address.setCustomerList(attachedCustomerList);
@@ -86,7 +86,7 @@ public class AddressJpaController implements Serializable {
             List<Customer> customerListNew = address.getCustomerList();
             List<Customer> attachedCustomerListNew = new ArrayList<Customer>();
             for (Customer customerListNewCustomerToAttach : customerListNew) {
-                customerListNewCustomerToAttach = em.getReference(customerListNewCustomerToAttach.getClass(), customerListNewCustomerToAttach.getCustomerid());
+                customerListNewCustomerToAttach = em.getReference(customerListNewCustomerToAttach.getClass(), customerListNewCustomerToAttach.getEmail());
                 attachedCustomerListNew.add(customerListNewCustomerToAttach);
             }
             customerListNew = attachedCustomerListNew;

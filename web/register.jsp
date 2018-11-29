@@ -24,7 +24,7 @@
     <body style="margin-top: 100px; background-image: url('pic/pinkregis.jpg'); background-size: cover; " class="d-flex justify-content-center">
 
         <h1 style="margin-top: 50px; margin-right: 100px;">Register</h1>
-        <form action="Login" method="post">
+        <form action="RegisterServlet" method="post">
             <div style="width: 300px; text-align: left;">
                 <p>
                     Email : <input type="text" name="email" style="height: 20px" required/> 
@@ -36,13 +36,19 @@
                     Confirm Password : <input type="text" name="comfirmPassword" style="height: 20px" required/>
                 </p>
                 <p>
-                    ชื่อ - นามสกุล : <input type="text" name="addressline1" style="height: 20px" required/>
+                    ชื่อ : <input type="text" name="firstname" style="height: 20px" required/>
+                </p>
+                <p>
+                    นามสกุล : <input type="text" name="lastname" style="height: 20px" required/>
+                </p>
+                <p>
+                    เบอร์ติดต่อ : <input type="text" name="phonenumber" style="height: 20px" required/>
                 </p>
                 <p>
                     ที่อยู่ : <input type="text" name="addressline1" style="height: 20px;" required/>
                 </p>
                 <p>
-                    <input type="text" name="addressline2" style="height: 20px; margin-left: 41px;" required/>
+                    <input type="text" name="addressline2" style="height: 20px; margin-left: 41px;"/>
                 </p>
                 <p>
                     แขวง / ตำบล : <input type="text" name="district" style="height: 20px" required/>
@@ -56,9 +62,7 @@
                 <p>
                     รหัสไปรษณีย์ : <input type="number" name="postalcode" maxlength="5" style="height: 20px" required/>
                 </p>
-                <p>
-                    เบอร์ติดต่อ : <input type="text" maxlength="10" name="addressline2" style="height: 20px"required/>
-                </p>
+
                 <p>
                     <input type="submit" value="Submit" style="margin-top: 5px;"/>
                 </p>
