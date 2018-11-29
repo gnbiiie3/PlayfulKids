@@ -22,10 +22,10 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
                 <title>Register</title>
             </head>
-            <body style="margin-top: 100px; background-image: url('pic/editprofile.jpg'); background-size: cover; " class="d-flex justify-content-center">
+            <body style="margin-top: 100px; background-image: url('pic/bgprofile.jpg'); background-size: cover; " class="d-flex justify-content-center">
             
         
-                <h1 style="margin-top: 50px; margin-right: 100px;">Register</h1>
+                <h1 style="margin-top: 50px; margin-right: 100px;">Edit Profile</h1>
                 <form action="Register" method="post">
                     <div style="width: 300px; text-align: left;">
                         <p>

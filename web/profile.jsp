@@ -27,11 +27,15 @@
     <title>Register</title>
 </head>
 
-<body style="margin-top: 100px; background-image: url('pic/bgprofile.jpg'); background-size: cover; " class="d-flex justify-content-center">
+<body style="margin-top: 100px; background-image: url('pic/editprofile.jpg'); background-size: cover; " class="d-flex justify-content-center">
 
-
-    <img src="pic/profile.png" style="margin-top: 50px; margin-right: 100px;">
-    <h1 style="margin-top: 50px; margin-right: 100px;">Profile</h1>
+    <div class="row">
+        
+        <h1 style="margin-top: 50px; margin-right: 100px;">Profile</h1>
+        <p>
+            <img src="pic/profile.png" style="margin-top: 50px; margin-right: 100px; width:130px; height: 100px;">
+        </p>
+    </div>
     <form action="Register" method="post">
         <div style="width: 300px; text-align: left;">
             <p>
