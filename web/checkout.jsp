@@ -34,7 +34,7 @@
                 <c:forEach items="${cart.lineItems}" var="product" varStatus="i">
                     <div class="row px-3 ">
                         <div class="col-8 pl-5">${product.product.productname}</div>
-                        <div class="col-2 text-center">{จำนวน}</div>
+                        <div class="col-2 text-center">1</div>
                         <div class="col-2 text-center">${product.product.productprice}</div>
                     </div>
                 </c:forEach>

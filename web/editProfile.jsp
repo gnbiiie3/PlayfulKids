@@ -21,11 +21,12 @@
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
                 <title>Register</title>
+                <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
             </head>
-            <body style="margin-top: 100px; background-image: url('pic/editprofile.jpg'); background-size: cover; " class="d-flex justify-content-center">
+            <body style="margin-top: 100px; background-image: url('pic/bgprofile.jpg'); background-size: cover; " class="d-flex justify-content-center">
             
         
-                <h1 style="margin-top: 50px; margin-right: 100px;">Register</h1>
+                <h1 style="margin-top: 50px; margin-right: 100px;">Edit Profile</h1>
                 <form action="Register" method="post">
                     <div style="width: 300px; text-align: left;">
                         <p>
@@ -77,5 +78,8 @@
                     width: 100vw;
                     text-align: center;
                 }
+                body {
+        font-family: 'Itim', cursive;
+    }
             </style>
 </html>
