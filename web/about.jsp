@@ -51,11 +51,11 @@
             <img class="card-img-top" src="pic/profilebosz.jpg" alt="">
             <div class="card-body">
               <h4 class="card-title">บอส</h4>
-              <h6 class="card-subtitle mb-2 text-muted">Position</h6>
+              
               <p class="card-text">คณิศร ชัยวิชาชาญ</p>
             </div>
             <div class="card-footer">
-              <a href="#">name@example.com</a>
+              60130500008
             </div>
           </div>
         </div>
@@ -64,11 +64,11 @@
             <img class="card-img-top" src="pic/profilejenny.jpg" alt="">
             <div class="card-body">
               <h4 class="card-title">เจนนี่</h4>
-              <h6 class="card-subtitle mb-2 text-muted">Position</h6>
+              
               <p class="card-text">จิราพัชร เหลืองอร่ามสกุล</p>
             </div>
             <div class="card-footer">
-              <a href="#">name@example.com</a>
+              60130500014
             </div>
           </div>
         </div>
@@ -77,11 +77,11 @@
             <img class="card-img-top" src="pic/profilefirst.jpg" alt="">
             <div class="card-body">
               <h4 class="card-title">เฟิร์ส</h4>
-              <h6 class="card-subtitle mb-2 text-muted">Position</h6>
+              
               <p class="card-text">สริตา สงวนศักดิ์ศรี</p>
             </div>
             <div class="card-footer">
-              <a href="#">name@example.com</a>
+              60130500094
             </div>
           </div>
         </div>
