@@ -16,9 +16,7 @@
         <div class="container">
 
             <!-- Page Heading/Breadcrumbs -->
-            <h1 class="mt-4 mb-3">Portfolio Item
-                <small>Subheading</small>
-            </h1>
+            <h1 class="mt-4 mb-3">${product.productname}</h1>
 
             <ol class="breadcrumb">
                 <!-- Example single danger button -->
@@ -28,9 +26,9 @@
                     </button>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="ProductList?category=1">ด้านสติปัญญา</a>
-                        <a class="dropdown-item" href="ProductList?category=1">ด้านร่างกาย</a>
-                        <a class="dropdown-item" href="ProductList?category=1">ด้านอารมณ์</a>
-                        <a class="dropdown-item" href="ProductList?category=1">ด้านสังคม</a>
+                        <a class="dropdown-item" href="ProductList?category=2">ด้านร่างกาย</a>
+                        <a class="dropdown-item" href="ProductList?category=3">ด้านอารมณ์</a>
+                        <a class="dropdown-item" href="ProductList?category=4">ด้านสังคม</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="ProductList">ดูทั้งหมด</a>
                     </div>
@@ -48,56 +46,32 @@
             <div class="row">
 
                 <div class="col-md-8">
-                    <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+                    <img class="img-fluid" src="product/${product.productid}.jpg" alt="">
                 </div>
 
                 <div class="col-md-4">
-                    <h3 class="my-3">${demo}</h3>
-                    <p>${demo}</p>
-                    <h3 class="my-3">${demo}</h3>
+                    <h3 class="my-3">${product.productname}</h3>
+                    <p>ประเภท : ${product.productcategory.categoryname}</p>
+                    <h3 class="my-3">ราคา ${product.productprice} บาท</h3>
+                    <br>
+                    <p>${product.productdescription}</p>
+                    
                     <ul>
-                        <li>Lorem Ipsum</li>
-                        <li>Dolor Sit Amet</li>
-                        <li>Consectetur</li>
-                        <li>Adipiscing Elit</li>
+                        <li>ผลิตมาจาก ${product.materialofproduct}</li>
+                        <li>เหมาสำหรับเด้กอายุ ${product.productforage} ปี ขึ้นไป</li>
                     </ul>
+                    
+                    <a href="AddToCart?productid=${product.productid}"><button type="button" class="btn btn-success">ซื้อเลย!</button></a>
                 </div>
 
             </div>
             <!-- /.row -->
 
-            <!-- Related Projects Row -->
-            <h3 class="my-4">สินค้าที่ใกล้เคียงกัน</h3>
 
-            <div class="row">
-                <!--ให้ดึงมาแค่ 4-->
-                <c:forEach items="${demo}" var="lineItem" varStatus="vs">
-                    <div class="col-md-3 col-sm-6 mb-4" style="margin-bottom: 15px;">
-                        <div class="card h-100">
-                            <a href="${demo}"><img class="card-img-top" src="product/${demo}" alt="${demo}"></a>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-6 text-left">
-                                        <h4 class="card-title">
-                                            <a href="${demo}">${demo}</a>
-                                        </h4>
-                                    </div>
-                                    <div class="col-6 text-right">
-                                        <a href="${demo}"><button type="button" class="btn btn-success">ซื้อเลย!</button></a>
-                                    </div>
-                                </div>
-                                <h6>
-                                    <a href="${demo}">Catalog</a>
-                                </h6>
-                                <p class="card-text">${demo}</p>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
                 
 
-            </div>
-            <!-- /.row -->
+            
+           
 
         </div>
         <!-- /.container -->
