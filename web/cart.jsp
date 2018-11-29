@@ -34,8 +34,8 @@
 
                 <div class="row" style="text-align: center; font-weight: bold">
                     <div class="col-2">ภาพตัวอย่าง</div>
-                    <div class="col-4">ชื่อสินค้า</div>
-                    <div class="col-3">จำนวน</div>
+                    <div class="col-5">ชื่อสินค้า</div>
+                    <div class="col-2">จำนวน</div>
                     <div class="col-2">ราคา/หน่วย</div>
                     <div class="col-1"></div>
                 </div>
@@ -47,12 +47,9 @@
                     <div class="row" style="text-align: center;">
                         <div class="col-2"><img class="img-thumbnail" src="product/${product.product.productid}.jpg"
                                 alt="" /></div>
-                        <div class="col-4">${product.product.productname}<br>${product.product.productdescription}</div>
-                        <div class="col-3">
-                                <div class="row">
-                                    <div class="col-2"><input class="form-control mr-sm-2" type="number" name="receivername"></div>
-                                    <div class="col-1"><button type="button" class="btn btn-info">+</button></div>
-                                </div>
+                        <div class="col-5">${product.product.productname}<br>${product.product.productdescription}</div>
+                        <div class="col-2 text-center">
+                                1
                         </div>
                         <div class="col-2">${product.salePrice}</div>
                         <div class="col-1"><a href="RemoveProductFromCart?productid=${product.product.productid}" class="btn btn-danger"
@@ -77,7 +74,8 @@
                         </div>
                         <div class="row" style="margin-top: 25px;">
                             <div class="col-6"></div>
-                            <div class="col-6"><button type="button" class="btn btn-success">ชำระเงินค่าสินค้า</button></div>
+                            <div class="col-6">
+                                <a class="btn btn-success" href="CheckOut" role="button">ชำระเงินค่าสินค้า</a></div>
                         </div>
                     </div>
                 </div>

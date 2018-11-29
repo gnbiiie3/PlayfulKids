@@ -72,21 +72,21 @@
                     
                     <!-- ตัวฟอร์มกรอกชำระ -->
                     <div class="col-12 pb-1">
-                        <input class="form-control mr-sm-2 " type="name" name="receivername" placeholder="ชื่อเจ้าของบัญชี">
+                        <input class="form-control mr-sm-2 " type="name" name="card-name" placeholder="ชื่อเจ้าของบัญชี">
                     </div>
                     <div class="col-12 pb-1">
-                        <input class="form-control mr-sm-2" type="name" name="receivername" placeholder="เลขที่บนบัตร">
+                        <input class="form-control mr-sm-2" type="name" name="card-number" placeholder="เลขที่บนบัตร">
                     </div>
                     <div class="col-6" pb-1>
-                        <input class="form-control mr-sm-2" type="date" name="receivername" placeholder="วันหมดอายุ">
+                        <input class="form-control mr-sm-2" type="date" name="card-expired" placeholder="วันหมดอายุ">
                     </div>
                     <div class="col-6" pb-1>
-                        <input class="form-control mr-sm-2" type="name" name="receivername" placeholder="รหัส CVC">
+                        <input class="form-control mr-sm-2" type="name" name="card-cvc" placeholder="รหัส CVC">
                     </div>
                     <!-- ตัวฟอร์มกรอกชำระ -->
                 </div>
             </div>
-            <button type="button" class="btn btn-success mt-3 float-right mb-5">Checkout</button>
+            <a class="btn btn-success" href="CheckOutSuccess" role="button">Check Out</a></div>
         </div>
         <footer class="py-5 bg-dark" style="margin-top: 70px;">
             <div class="container">

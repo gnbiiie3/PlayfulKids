@@ -25,47 +25,38 @@
             </head>
             <body style="margin-top: 100px; background-image: url('pic/bgprofile.jpg'); background-size: cover; " class="d-flex justify-content-center">
             
-        
+             
                 <h1 style="margin-top: 50px; margin-right: 100px;">Edit Profile</h1>
-                <form action="Register" method="post">
+                <form action="EditProfile" method="post">
                     <div style="width: 300px; text-align: left;">
                         <p>
-                            Email : <input type="text" name="email" style="height: 20px" required/> 
+                            ชื่อ : <input type="text" name="firstname" style="height: 20px" value="${customer.firstname}" required/>
                         </p>
                         <p>
-                            Password : <input type="password" name="password" style="height: 20px" required/>
+                            นามสกุล : <input type="text" name="lastname" style="height: 20px" value="${customer.lastname}" required/>
                         </p>
                         <p>
-                            Confirm Password : <input type="password" name="confirmpassword" style="height: 20px" required/>
+                            เบอร์ติดต่อ : <input type="text" name="phonenumber" style="height: 20px"  value="${customer.phonenumber}" required/>
                         </p>
                         <p>
-                            ชื่อ : <input type="text" name="firstname" style="height: 20px" required/>
+                            ที่อยู่ : <input type="text" name="addressline1" style="height: 20px;" value="${address.addressline1}" required/>
                         </p>
                         <p>
-                            นามสกุล : <input type="text" name="lastname" style="height: 20px" required/>
+                            <input type="text" name="addressline2" style="height: 20px;  margin-left: 41px;" value="${address.addressline2}"/>
                         </p>
                         <p>
-                            เบอร์ติดต่อ : <input type="text" name="phonenumber" style="height: 20px" required/>
+                            แขวง / ตำบล : <input type="text" name="district" style="height: 20px" value="${address.district}" required/>
                         </p>
                         <p>
-                            ที่อยู่ : <input type="text" name="addressline1" style="height: 20px;" required/>
+                            เขต / อำเภอ : <input type="text" name="city" style="height: 20px" value="${address.city}" required/>
                         </p>
                         <p>
-                            <input type="text" name="addressline2" style="height: 20px; margin-left: 41px;"/>
+                            จังหวัด : <input type="text" name="province" style="height: 20px" value="${address.province}" required />
                         </p>
                         <p>
-                            แขวง / ตำบล : <input type="text" name="district" style="height: 20px" required/>
+                            รหัสไปรษณีย์ : <input type="number" name="postalcode" maxlength="5" style="height: 20px" value="${address.postalcode}"  required/>
                         </p>
-                        <p>
-                            เขต / อำเภอ : <input type="text" name="city" style="height: 20px" required/>
-                        </p>
-                        <p>
-                            จังหวัด : <input type="text" name="province" style="height: 20px" required />
-                        </p>
-                        <p>
-                            รหัสไปรษณีย์ : <input type="number" name="postalcode" maxlength="5" style="height: 20px" required/>
-                        </p>
-                        <button type="button" class="btn btn-info">Submit</button>
+                        <button type="submit" class="btn btn-info">แก้ไขข้อมูล</button>
         
                     </div>
         

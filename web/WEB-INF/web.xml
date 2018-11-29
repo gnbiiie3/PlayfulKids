@@ -52,6 +52,22 @@
         <servlet-name>HistoryServlet</servlet-name>
         <servlet-class>servlet.HistoryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>servlet.ProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditProfileServlet</servlet-name>
+        <servlet-class>servlet.EditProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditProfilePageServlet</servlet-name>
+        <servlet-class>servlet.EditProfilePageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckOutSuccessServlet</servlet-name>
+        <servlet-class>servlet.CheckOutSuccessServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ActivateServlet</servlet-name>
         <url-pattern>/Activate</url-pattern>
@@ -103,6 +119,22 @@
     <servlet-mapping>
         <servlet-name>HistoryServlet</servlet-name>
         <url-pattern>/History</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/Profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProfileServlet</servlet-name>
+        <url-pattern>/EditProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProfilePageServlet</servlet-name>
+        <url-pattern>/EditProfilePage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckOutSuccessServlet</servlet-name>
+        <url-pattern>/CheckOutSuccess</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

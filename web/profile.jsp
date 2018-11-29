@@ -40,37 +40,37 @@
     <form action="Register" method="post">
         <div style="width: 300px; text-align: left;">
             <p>
-                ชื่อ : 
+                ชื่อ : ${customer.firstname}
             </p>
             <p>
-                Email : 
+                Email : ${account.email}
             </p>
             <p>
-                นามสกุล :
+                นามสกุล : ${customer.lastname}
             </p>
             <p>
-                เบอร์ติดต่อ :
+                เบอร์ติดต่อ : ${customer.phonenumber}
             </p>
             <p>
-                ที่อยู่ :
+                ที่อยู่ : ${address.addressline1} ${address.addressline2}
             </p>
             <p>
-                แขวง / ตำบล :
+                แขวง / ตำบล : ${address.district}
             </p>
             <p>
-                เขต / อำเภอ : 
+                เขต / อำเภอ : ${address.city}
             </p>
             <p>
-                จังหวัด :
+                จังหวัด : ${address.province}
             </p>
             <p>
-                รหัสไปรษณีย์ : 
+                รหัสไปรษณีย์ : ${address.postalcode}
             </p>
             <p>
-                <a href="editProfile.jsp">
+                <a href="EditProfilePage">
                     <button type="button" class="btn btn-warning">Edit Profile</button>
                 </a>
-                <a href="index.jsp">
+                <a href="Home">
                     <button type="button" class="btn btn-light">Back</button>
                 </a>
             </p>
