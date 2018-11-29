@@ -30,10 +30,10 @@ public class CartServlet extends HttpServlet {
 
     @PersistenceUnit(unitName = "PlayfulKidsPU")
     EntityManagerFactory emf;
-    
+
     @Resource
     UserTransaction utx;
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -46,25 +46,30 @@ public class CartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        
+
         HttpSession session = request.getSession(false);
-        
-        AddressJpaController addJpaCtrl = new AddressJpaController(utx, emf);
-        Customer customer = (Customer) session.getAttribute("customer");
-        Address lastAddress = addJpaCtrl.findAddress(customer.getLastaddress().getAddressid());
-        request.setAttribute("address", lastAddress);
-        
-        if (session != null) {
-            Cart cart = (Cart) session.getAttribute("cart");
-            
-            if (cart != null) {
-                getServletContext().getRequestDispatcher("/cart.jsp").forward(request, response);
-                return;
+
+        if (session.getAttribute("account") != null) {
+
+            AddressJpaController addJpaCtrl = new AddressJpaController(utx, emf);
+            Customer customer = (Customer) session.getAttribute("customer");
+            Address lastAddress = addJpaCtrl.findAddress(customer.getLastaddress().getAddressid());
+            request.setAttribute("address", lastAddress);
+
+            if (session != null) {
+                Cart cart = (Cart) session.getAttribute("cart");
+
+                if (cart != null) {
+                    getServletContext().getRequestDispatcher("/cart.jsp").forward(request, response);
+                    return;
+                }
             }
+            request.setAttribute("message", "คุณยังไม่มีสินค้าในตะกร้าของคุณ");
+            getServletContext().getRequestDispatcher("/cart.jsp").forward(request, response);
+
+        } else {
+            getServletContext().getRequestDispatcher("/Login").forward(request, response);
         }
-        request.setAttribute("message", "คุณยังไม่มีสินค้าในตะกร้าของคุณ");
-        getServletContext().getRequestDispatcher("/cart.jsp").forward(request, response);
-    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

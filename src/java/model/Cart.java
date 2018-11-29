@@ -35,7 +35,7 @@ public class Cart implements Serializable {
         }
     }
 
-    public void minus(Product p) {
+    public void removeProduct(Product p) {
         LineItem line = cart.get(p.getProductid());
         if (line.getQuantity() <= 1) {
             return;
