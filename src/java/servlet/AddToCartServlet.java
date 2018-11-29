@@ -47,22 +47,27 @@ public class AddToCartServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession(true);
 
-        Cart cart = (Cart) session.getAttribute("cart");
-        
-        if (cart == null) {
-            cart = new Cart();
+        if (session.getAttribute("account") != null) {
+
+            Cart cart = (Cart) session.getAttribute("cart");
+
+            if (cart == null) {
+                cart = new Cart();
+                session.setAttribute("cart", cart);
+            }
+
+            String receiveProduct = request.getParameter("productid");
+            int productId = Integer.parseInt(receiveProduct);
+            ProductJpaController proJpaCtrl = new ProductJpaController(utx, emf);
+            Product product = proJpaCtrl.findProduct(productId);
+
+            cart.add(product);
             session.setAttribute("cart", cart);
+
+            getServletContext().getRequestDispatcher("/Cart").forward(request, response);
+        } else {
+            getServletContext().getRequestDispatcher("/Login").forward(request, response);
         }
-        
-        String receiveProduct = request.getParameter("productid");
-        int productId = Integer.parseInt(receiveProduct);
-        ProductJpaController proJpaCtrl = new ProductJpaController(utx, emf);
-        Product product = proJpaCtrl.findProduct(productId);
-
-        cart.add(product);
-        session.setAttribute("cart", cart);
-
-        getServletContext().getRequestDispatcher("/Cart").forward(request, response);
 
     }
 

@@ -43,24 +43,23 @@ public class RemoveProductFromCartServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String operator = request.getParameter("operator");
-        String url = request.getParameter("url");
+
         HttpSession session = request.getSession();
-        
-        if (operator.equalsIgnoreCase("remove")) {
+
+        if (session.getAttribute("account") != null) {
             Cart cart = (Cart) session.getAttribute("cart");
             ProductJpaController productJpaCtrl = new ProductJpaController(utx, emf);
-            String productId = request.getParameter("productId");
+            String productId = request.getParameter("productid");
             Product product = productJpaCtrl.findProduct(Integer.parseInt(productId));
-            System.out.println(cart.getTotalQuantity());
-            cart.minus(product);
-            System.out.println(cart.getTotalQuantity());
+            cart.remove(product);
             session.setAttribute("cart", cart);
-            
-            
-            getServletContext().getRequestDispatcher("/" + url).forward(request, response);
 
+            getServletContext().getRequestDispatcher("/Cart").forward(request, response);
+
+        } else {
+            getServletContext().getRequestDispatcher("/Login").forward(request, response);
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
