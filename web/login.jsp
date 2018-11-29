@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Login</title>
     </head>
-    <body>
+    <body style="background-image: url('pic/kidslogin.jpg')">
         <h1 style="margin-top: 250px;">LOGIN</h1>
         <form action="Login" method="post">
             <p>

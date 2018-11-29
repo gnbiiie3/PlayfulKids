@@ -20,7 +20,10 @@
 
 
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top" style="background-color: #223F4A
+
+
+">
     <div class="container">
         <a class="navbar-brand" href="index.jsp">Playful Kids</a>
         <ul class="navbar-nav ml-auto">
