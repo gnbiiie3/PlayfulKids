@@ -48,6 +48,10 @@
         <servlet-name>RemoveProductFromCartServlet</servlet-name>
         <servlet-class>servlet.RemoveProductFromCartServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HistoryServlet</servlet-name>
+        <servlet-class>servlet.HistoryServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ActivateServlet</servlet-name>
         <url-pattern>/Activate</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>RemoveProductFromCartServlet</servlet-name>
         <url-pattern>/RemoveProductFromCart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HistoryServlet</servlet-name>
+        <url-pattern>/History</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

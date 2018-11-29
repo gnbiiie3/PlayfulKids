@@ -5,9 +5,10 @@
  */
 package servlet;
 
-import controller.ProductJpaController;
+import controller.HistorydetailJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
@@ -18,18 +19,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
-import model.Cart;
-import model.Product;
+import model.Account;
+import model.History;
+import model.Historydetail;
 
 /**
  *
  * @author kanisorn
  */
-public class AddToCartServlet extends HttpServlet {
-    
+public class HistoryServlet extends HttpServlet {
+
     @PersistenceUnit(unitName = "PlayfulKidsPU")
     EntityManagerFactory emf;
-    
+
     @Resource
     UserTransaction utx;
 
@@ -44,35 +46,38 @@ public class AddToCartServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession(true);
-        ProductJpaController proJpaCtrl = new ProductJpaController(utx, emf);
-        if (session.getAttribute("account") != null) {
-            
-            Cart cart = (Cart) session.getAttribute("cart");
-            
-            if (cart == null) {
-                cart = new Cart();
-                session.setAttribute("cart", cart);
-            }
-            
-            String receiveProduct = request.getParameter("productid");
-            int productId = Integer.parseInt(receiveProduct);
-            List<Product> products = proJpaCtrl.findProductEntities();
-            Product product = proJpaCtrl.findProduct(productId);
-            
-            cart.add(product);
-            System.out.println(cart.getTotalQuantity());
-            session.setAttribute("cart", cart);
-            getServletContext().getRequestDispatcher("/Cart").forward(request, response);
-        } else {
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        Account account = (Account) session.getAttribute("account");
+        HistorydetailJpaController hisDJpaCtrl = new HistorydetailJpaController(utx, emf);
+        if (account == null) {
             getServletContext().getRequestDispatcher("/Login").forward(request, response);
+            return;
         }
-        
+        List<History> order = account.getHistoryList();
+        List<History> order_new = new ArrayList<>();
+
+        List<Historydetail> allHistoryDetail = hisDJpaCtrl.findHistorydetailEntities();
+        List<Historydetail> listhistorylist = new ArrayList<>();
+
+        for (History historyorder : order) {
+            if (historyorder.getEmail().equals(account.getEmail())) {
+                order_new.add(historyorder);
+                for (Historydetail historyDetail :allHistoryDetail) {
+                    if (historyDetail.getHistoryid().equals(historyorder)) {
+                        listhistorylist.add(historyDetail);
+                    }
+                }
+            }
+
+        }
+        session.setAttribute("history", order_new);
+        session.setAttribute("historydetail", listhistorylist);
+        System.out.println(order);
+        getServletContext().getRequestDispatcher("/history.jsp").forward(request, response);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
