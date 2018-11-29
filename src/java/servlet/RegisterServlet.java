@@ -97,6 +97,7 @@ public class RegisterServlet extends HttpServlet {
                     newCustomer.setLastname(lastName);
                     newCustomer.setPhonenumber(phoneNumber);
                     newCustomer.setLastaddress(newAddress);
+                    newCustomer.setEmail(email);
                     newAccount.setEmail(email);
                     newAccount.setPassword(password);
 
