@@ -65,7 +65,7 @@
                 </p>
 
                 <p>
-                    <input type="submit" value="Submit" style="margin-top: 5px;"/>
+                    <button type="submit" class="btn btn-info">Submit</button>
                 </p>
             </div>
 
