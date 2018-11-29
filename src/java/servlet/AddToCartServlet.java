@@ -8,6 +8,7 @@ package servlet;
 import controller.ProductJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -46,7 +47,7 @@ public class AddToCartServlet extends HttpServlet {
 
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession(true);
-
+        ProductJpaController proJpaCtrl = new ProductJpaController(utx, emf);
         if (session.getAttribute("account") != null) {
 
             Cart cart = (Cart) session.getAttribute("cart");
@@ -58,11 +59,13 @@ public class AddToCartServlet extends HttpServlet {
 
             String receiveProduct = request.getParameter("productid");
             int productId = Integer.parseInt(receiveProduct);
-            ProductJpaController proJpaCtrl = new ProductJpaController(utx, emf);
+            List<Product> products = proJpaCtrl.findProductEntities();
             Product product = proJpaCtrl.findProduct(productId);
 
             cart.add(product);
             session.setAttribute("cart", cart);
+            
+
 
             getServletContext().getRequestDispatcher("/Cart").forward(request, response);
         } else {
