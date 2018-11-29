@@ -27,10 +27,10 @@
     <title>Register</title>
 </head>
 
-<body style="margin-top: 100px; background-image: url('pic/pinkregis.jpg'); background-size: cover; " class="d-flex justify-content-center">
+<body style="margin-top: 100px; background-image: url('pic/bgprofile.jpg'); background-size: cover; " class="d-flex justify-content-center">
 
 
-    <img style="margin-top: 50px; margin-right: 100px;">
+    <img src="pic/profile.png" style="margin-top: 50px; margin-right: 100px;">
     <h1 style="margin-top: 50px; margin-right: 100px;">Profile</h1>
     <form action="Register" method="post">
         <div style="width: 300px; text-align: left;">
