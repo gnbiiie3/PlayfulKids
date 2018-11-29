@@ -25,6 +25,7 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Register</title>
+    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
 </head>
 
 <body style="margin-top: 100px; background-image: url('pic/editprofile.jpg'); background-size: cover; " class="d-flex justify-content-center">
@@ -85,6 +86,9 @@
     body {
         width: 100vw;
         text-align: center;
+    }
+    body {
+        font-family: 'Itim', cursive;
     }
 </style>
 

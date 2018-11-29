@@ -20,6 +20,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Login</title>
+        <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
     </head>
     <body style="background-image: url('pic/kidslogin.jpg')">
         <h1 style="margin-top: 250px;">LOGIN</h1>
@@ -39,5 +40,8 @@
             width: 100vw;
             text-align: center;
         }
+        body {
+        font-family: 'Itim', cursive;
+    }
     </style>
 </html>
