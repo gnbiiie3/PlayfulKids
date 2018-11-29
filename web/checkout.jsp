@@ -66,31 +66,24 @@
 
                 </div>
             </div>
-
-            <!-- ตัดบัตร -->
-            <div class="border border-secondary rounded mt-4">
-                <div class="row px-5 pt-3">
-                    <div class="col font-weight-bold">ชำระเงิน</div>
-                </div>
-                <hr>
-                <div class="d-flex justify-content-center">
-                    <div class="row pl-5 pr-2 pb-3" style="width: 50%">
-
-                        <!-- ตัวฟอร์มกรอกชำระ -->
-                        <div class="col-12 pb-1">
-                            <input class="form-control mr-sm-2 " type="name" name="receivername" placeholder="ชื่อเจ้าของบัญชี">
-                        </div>
-                        <div class="col-12 pb-1">
-                            <input class="form-control mr-sm-2" type="name" name="receivername" placeholder="เลขที่บนบัตร">
-                        </div>
-                        <div class="col-6" pb-1>
-                            <input class="form-control mr-sm-2" type="name" name="receivername" placeholder="วันหมดอายุ">
-                        </div>
-                        <div class="col-6" pb-1>
-                            <input class="form-control mr-sm-2" type="name" name="receivername" placeholder="รหัส CVC">
-                        </div>
-                        <!-- ตัวฟอร์มกรอกชำระ -->
+            <hr>
+            <div class="d-flex justify-content-center">
+                <div class="row pl-5 pr-2 pb-3" style="width: 50%">
+                    
+                    <!-- ตัวฟอร์มกรอกชำระ -->
+                    <div class="col-12 pb-1">
+                        <input class="form-control mr-sm-2 " type="name" name="receivername" placeholder="ชื่อเจ้าของบัญชี">
                     </div>
+                    <div class="col-12 pb-1">
+                        <input class="form-control mr-sm-2" type="name" name="receivername" placeholder="เลขที่บนบัตร">
+                    </div>
+                    <div class="col-6" pb-1>
+                        <input class="form-control mr-sm-2" type="date" name="receivername" placeholder="วันหมดอายุ">
+                    </div>
+                    <div class="col-6" pb-1>
+                        <input class="form-control mr-sm-2" type="name" name="receivername" placeholder="รหัส CVC">
+                    </div>
+                    <!-- ตัวฟอร์มกรอกชำระ -->
                 </div>
             </div>
             <button type="button" class="btn btn-success mt-3 float-right mb-5">Checkout</button>
