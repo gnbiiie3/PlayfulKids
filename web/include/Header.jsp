@@ -16,7 +16,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
 
 
 
@@ -89,7 +89,10 @@
     </div>
 </nav>
 <style>
-    nav{font-family: 'Slabo 27px', serif;}
+    nav{font-family: 'Itim', cursive;}
+    body {
+        font-family: 'Itim', cursive;
+    }
 </style>
 <style>
     /*    body {
@@ -100,6 +103,7 @@
             opacity: 0;
             transition: none;
         }*/
+    
 </style>
 <script>document.body.className += ' fade-out';
     $(function () {

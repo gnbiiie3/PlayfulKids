@@ -17,17 +17,21 @@
             <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/CartServlet.java</file>
             <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/web/cart.jsp</file>
             <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/AddToCartServlet.java</file>
+            <file>file:/C:/Users/Sarita/PlayfulKids/web/productIQ.jsp</file>
+            <file>file:/C:/Users/Sarita/PlayfulKids/web/productPage.jsp</file>
+            <file>file:/C:/Users/Sarita/PlayfulKids/web/about.jsp</file>
+            <file>file:/C:/Users/Sarita/PlayfulKids/web/productDetail.jsp</file>
+            <file>file:/C:/Users/Sarita/PlayfulKids/web/index.jsp</file>
+            <file>file:/C:/Users/Sarita/PlayfulKids/web/register.jsp</file>
+            <file>file:/C:/Users/Sarita/PlayfulKids/web/login.jsp</file>
         </group>
         <group>
-            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/LoginServlet.java</file>
-            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/model/Product.java</file>
-            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/RegisterServlet.java</file>
-            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/HomeServlet.java</file>
-            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/web/WEB-INF/web.xml</file>
-            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/CartServlet.java</file>
-            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/AddAddressServlet.java</file>
-            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/web/cart.jsp</file>
-            <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/AddToCartServlet.java</file>
+            <file>file:/C:/Users/Sarita/PlayfulKids/src/java/servlet/LoginServlet.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/Sarita/PlayfulKids/src/java/controller/AccountJpaController.java</file>
+            <file>file:/C:/Users/Sarita/PlayfulKids/src/conf/persistence.xml</file>
+            <file>file:/C:/Users/Sarita/PlayfulKids/src/java/servlet/LoginServlet.java</file>
         </group>
         <group>
             <file>file:/Users/kanisorn/Documents/GitHub/PlayfulKids/src/java/servlet/LoginServlet.java</file>

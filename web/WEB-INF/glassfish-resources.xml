@@ -11,4 +11,6 @@
         <property name="driverClass" value="org.apache.derby.jdbc.ClientDriver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/PlayfulKids" object-type="user" pool-name="derby_net_PlayfulKidsWebApplication_appPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/PlayfulKids" object-type="user" pool-name="derby_net_PlayfulKidsWebApplication_appPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/PlayfulKids" object-type="user" pool-name="derby_net_PlayfulKidsWebApplication_appPool"/>
 </resources>
