@@ -67,8 +67,7 @@ public class RegisterServlet extends HttpServlet {
         String postalCode = request.getParameter("postalcode");
 
         HttpSession session = request.getSession(false);
-        
-        if (email != null && password != null && confirmPassword != null && phoneNumber != null && firstName != null && lastName != null & addressLine1 != null && district != null && city != null && province != null && postalCode != null) {
+        if (email != null) {
             password = cryptWithMD5(password);
             confirmPassword = cryptWithMD5(confirmPassword);
             if (password.equals(confirmPassword)) {
@@ -80,7 +79,7 @@ public class RegisterServlet extends HttpServlet {
                     for (Account account : accountInDatabase) {
                         if (account.getEmail().equalsIgnoreCase(email)) {
                             request.setAttribute("message", "อีเมลนี้ได้ถูกใช้งานแล้ว กรุณาเปลี่ยนอีเมล");
-                            getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);
+                            getServletContext().getRequestDispatcher("/Register").forward(request, response);
                         }
                     }
                     Account newAccount = new Account();
@@ -93,19 +92,21 @@ public class RegisterServlet extends HttpServlet {
                     newAddress.setCity(city);
                     newAddress.setProvince(province);
                     newAddress.setPostalcode(postalCode);
+                    
                     newCustomer.setFirstname(firstName);
                     newCustomer.setLastname(lastName);
                     newCustomer.setPhonenumber(phoneNumber);
                     newCustomer.setLastaddress(newAddress);
                     newCustomer.setEmail(email);
+                    
                     newAccount.setEmail(email);
                     newAccount.setPassword(password);
 
                     try {
+                        accJpaCtrl.create(newAccount);
                         addJpaCtrl.create(newAddress);
                         cusJpaCtrl.create(newCustomer);
-                        accJpaCtrl.create(newAccount);
-                        session.setAttribute("account", newAccount);
+                        
                         getServletContext().getRequestDispatcher("Home").forward(request, response);
                     } catch (RollbackFailureException ex) {
                         Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -121,6 +122,7 @@ public class RegisterServlet extends HttpServlet {
         } else {
             getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);
         }
+
     }
 
     public static String cryptWithMD5(String password) {
