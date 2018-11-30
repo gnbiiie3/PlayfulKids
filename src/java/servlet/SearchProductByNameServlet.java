@@ -48,13 +48,10 @@ public class SearchProductByNameServlet extends HttpServlet {
         String searchName = request.getParameter("search");
         ProductJpaController proJpaCtrl = new ProductJpaController(utx,emf);
         List<Product> allProduct = proJpaCtrl.findProductEntities();
-        List<Product> foundProduct = new ArrayList<Product>();
+        List<Product> foundProduct = proJpaCtrl.searchByName(searchName);
         
-        for (Product product : allProduct) {
-            if (product.getProductname().equalsIgnoreCase(searchName)) {
-                foundProduct.add(product);
-            }
-        }
+        System.out.println(foundProduct);
+        
         session.setAttribute("search", searchName);
         session.setAttribute("product", foundProduct);
         getServletContext().getRequestDispatcher("/result.jsp").forward(request, response);

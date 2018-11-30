@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p")
     , @NamedQuery(name = "Product.findByProductid", query = "SELECT p FROM Product p WHERE p.productid = :productid")
-    , @NamedQuery(name = "Product.findByProductname", query = "SELECT p FROM Product p WHERE p.productname = :productname")
+    , @NamedQuery(name = "Product.findByProductname", query = "SELECT p FROM Product p WHERE lower(p.productname) like lower(:productname)")
     , @NamedQuery(name = "Product.findByProductforage", query = "SELECT p FROM Product p WHERE p.productforage = :productforage")
     , @NamedQuery(name = "Product.findByMaterialofproduct", query = "SELECT p FROM Product p WHERE p.materialofproduct = :materialofproduct")
     , @NamedQuery(name = "Product.findByProductdescription", query = "SELECT p FROM Product p WHERE p.productdescription = :productdescription")

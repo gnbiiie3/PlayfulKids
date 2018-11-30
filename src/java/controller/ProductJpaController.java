@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.transaction.UserTransaction;
 import model.Product;
 
@@ -243,6 +244,20 @@ public class ProductJpaController implements Serializable {
         }
     }
 
+    public List<Product> searchByName(String name) {
+        EntityManager em = getEntityManager();
+
+        try {
+            Query query = em.createNamedQuery("Product.findByProductname");
+            query.setParameter("productname", "%" + name + "%");
+            return query.getResultList();
+        } catch (NoResultException NoResult) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+
     public int getProductCount() {
         EntityManager em = getEntityManager();
         try {
@@ -255,5 +270,5 @@ public class ProductJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }
